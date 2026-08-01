@@ -586,8 +586,8 @@
             dataPublic.pengurus_harian.forEach(p => {
                 gridHarian.innerHTML += `
                     <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm text-center flex flex-col items-center">
-                        <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-pgri-red shadow mb-3 bg-slate-100">
-                            <img src="${p.foto}" onerror="this.onerror=null; this.src='https://placehold.co/200x200/990000/ffffff?text=${encodeURIComponent(p.nama.split(' ')[0])}';" class="w-full h-full object-cover">
+                        <div class="w-28 h-32 sm:w-32 sm:h-36 rounded-2xl overflow-hidden border-2 border-pgri-red shadow-sm mb-3 bg-slate-100">
+                            <img src="${p.foto}" onerror="this.onerror=null; this.src='https://placehold.co/200x240/990000/ffffff?text=${encodeURIComponent(p.nama.split(' ')[0])}';" class="w-full h-full object-cover">
                         </div>
                         <span class="text-[10px] font-extrabold text-pgri-red uppercase tracking-wider block mb-1 bg-red-50 px-2.5 py-0.5 rounded-full">${p.jabatan}</span>
                         <h4 class="font-bold text-slate-900 text-sm leading-snug">${p.nama}</h4>
@@ -599,13 +599,13 @@
             gridSeksi.innerHTML = '';
             dataPublic.pengurus_seksi.forEach(s => {
                 gridSeksi.innerHTML += `
-                    <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm flex items-center space-x-3">
-                        <div class="w-12 h-12 rounded-xl bg-amber-50 border border-amber-200 text-amber-700 flex items-center justify-center font-bold text-base flex-shrink-0">
-                            <i class="fa-solid fa-user-gear"></i>
+                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center space-x-3.5">
+                        <div class="w-14 h-16 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 flex-shrink-0">
+                            <img src="${s.foto}" onerror="this.onerror=null; this.src='https://placehold.co/150x180/990000/ffffff?text=${encodeURIComponent(s.nama.split(' ')[0])}';" class="w-full h-full object-cover">
                         </div>
                         <div>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-tight block">${s.bidang}</span>
-                            <h4 class="font-bold text-slate-900 text-xs">${s.nama}</h4>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-tight block mb-0.5">${s.bidang}</span>
+                            <h4 class="font-bold text-slate-900 text-xs leading-snug">${s.nama}</h4>
                         </div>
                     </div>
                 `;
