@@ -338,7 +338,7 @@
         <!-- Footer -->
         <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-                <p>Bidang Digitalisasi Organisasi (IU) © 2026 SIPGRI Cabang Tukdana</p>
+                <p>Bidang Digitalisasi Organisasi © 2026 SIPGRI Cabang Tukdana</p>
             </div>
         </footer>
     </div>
@@ -1109,11 +1109,11 @@
                 const tbody = document.getElementById('table-iuran-body');
                 tbody.innerHTML = '';
 
-                res.members.forEach(m => {
+                res.members.forEach((m, idx) => {
                     tbody.innerHTML += `
                         <tr class="hover:bg-slate-50">
                             <td class="p-3 text-center">
-                                ${m.isPaid ? `<i class="fa-solid fa-circle-check text-green-500 text-base"></i>` : `<input type="checkbox" class="cb-iuran-item" value="${m.npa}" onchange="recalculateIuranTotal()">`}
+                                ${m.isPaid ? `<i class="fa-solid fa-circle-check text-green-500 text-base"></i>` : `<input type="checkbox" class="cb-iuran-item" data-index="${idx}" value="${m.npa}" onchange="recalculateIuranTotal()">`}
                             </td>
                             <td class="p-3 font-mono font-bold">${m.npa}</td>
                             <td class="p-3 font-bold text-slate-800">${m.nama}</td>
@@ -1143,14 +1143,21 @@
         }
 
         async function submitIuranBatch() {
-            const selectedNPA = Array.from(document.querySelectorAll('.cb-iuran-item:checked')).map(cb => cb.value);
-            if(selectedNPA.length === 0) {
+            const checkedBoxes = Array.from(document.querySelectorAll('.cb-iuran-item:checked'));
+            if(checkedBoxes.length === 0) {
                 showToast('Pilih minimal satu anggota yang melakukan pembayaran!', 'error');
                 return;
             }
 
             const bulan = document.getElementById('select-bulan-iuran').value;
-            const itemsToSubmit = currentLoadedMembers.filter(m => selectedNPA.includes(m.npa)).map(m => ({ npa: m.npa, nama: m.nama, ranting: m.ranting }));
+            const itemsToSubmit = checkedBoxes.map(cb => {
+                const idx = parseInt(cb.getAttribute('data-index'));
+                return currentLoadedMembers[idx];
+            }).filter(Boolean).map(m => ({
+                npa: String(m.npa).trim(),
+                nama: String(m.nama).trim(),
+                ranting: String(m.ranting).trim()
+            }));
 
             const res = await callAPI({ action: 'inputIuranBatch', token: userToken, payload: { bulanTahun: bulan, items: itemsToSubmit } });
             if(res.status === 'success') {
