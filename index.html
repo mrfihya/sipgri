@@ -1,0 +1,637 @@
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+                colors: {
+                    pgri: {
+                        red: '#990000',
+                        redhover: '#7a0000',
+                        gold: '#d4af37',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    }
+                }
+            }
+        }
+    }
+</script>
+<style>
+    html { scroll-behavior: smooth; }
+    .bg-pattern {
+        background-image: radial-gradient(rgba(153, 0, 0, 0.05) 1px, transparent 1px);
+        background-size: 24px 24px;
+    }
+</style>
+
+
+<!-- Navigation Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo & Brand -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-full bg-pgri-red flex items-center justify-center text-white shadow-md font-bold text-xl border-2 border-pgri-gold">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <span class="block font-extrabold text-lg sm:text-xl text-slate-900 leading-tight">SIPGRI TUKDANA</span>
+                    <span class="block text-xs font-semibold text-pgri-red tracking-wide uppercase">PGRI Cabang Tukdana</span>
+                </div>
+            </div>
+
+            <!-- Navigation Menu Sesuai Urutan Baru -->
+            <nav class="hidden lg:flex items-center space-x-5 text-sm font-medium text-slate-600">
+                <a href="#beranda" class="hover:text-pgri-red transition-colors">Beranda</a>
+                <a href="#pengumuman" class="hover:text-pgri-red transition-colors">Pengumuman</a>
+                <a href="#sambutan" class="hover:text-pgri-red transition-colors">Sambutan</a>
+                <a href="#pengurus" class="hover:text-pgri-red transition-colors">Struktur Pengurus</a>
+                <a href="#ranting" class="hover:text-pgri-red transition-colors">Data Ranting</a>
+                <a href="#agenda" class="hover:text-pgri-red transition-colors">Agenda & Kegiatan</a>
+                <a href="#lokasi" class="hover:text-pgri-red transition-colors">Sekretariat</a>
+            </nav>
+
+            <!-- Login Action Button -->
+            <div class="flex items-center space-x-3">
+                <button onclick="openLoginModal()" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-white bg-pgri-red hover:bg-pgri-redhover shadow-md hover:shadow-lg transition-all transform active:scale-95">
+                    <i class="fa-solid fa-right-to-bracket mr-2"></i> Akses Portal Administrasi
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- 1. HERO HEADER WITH BACKGROUND PHOTO -->
+<section id="beranda" class="relative bg-slate-900 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
+    <!-- Background Image dari file bg-header.jpg di GitHub -->
+    <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center opacity-25"></div>
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+            <span class="inline-block py-1.5 px-4 rounded-full bg-pgri-red/40 border border-pgri-gold/50 text-amber-200 text-xs font-bold uppercase tracking-widest mb-4">
+                <i class="fa-solid fa-building-columns mr-1.5"></i> Portal Resmi PGRI Cabang Tukdana
+            </span>
+            
+            <!-- Judul Utama & Visi -->
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-white">
+                Sistem Informasi PGRI Cabang Tukdana
+            </h1>
+            
+            <p id="hero-visi" class="text-base sm:text-xl text-amber-300 font-medium max-w-3xl mx-auto leading-relaxed mb-8 italic">
+                "Mewujudkan pengelolaan organisasi PGRI Cabang Tukdana yang modern, transparan, profesional, dan terdigitalisasi"
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button onclick="openLoginModal()" class="px-7 py-3.5 rounded-xl font-bold text-sm bg-pgri-red hover:bg-pgri-redhover text-white transition shadow-lg flex items-center justify-center border border-amber-400/30">
+                    <i class="fa-solid fa-user-shield mr-2"></i> Akses Portal Administrasi
+                </button>
+                <a href="#pengurus" class="px-7 py-3.5 rounded-xl font-semibold text-sm bg-slate-800/90 border border-slate-700 text-slate-200 hover:bg-slate-700 transition flex items-center justify-center">
+                    <i class="fa-solid fa-sitemap mr-2 text-pgri-gold"></i> Lihat Pengurus Cabang
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 2. PENGUMUMAN PUBLIK -->
+<section id="pengumuman" class="py-14 bg-amber-50/50 border-b border-amber-200/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Papan Informasi</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center">
+                    <i class="fa-solid fa-bullhorn text-pgri-red mr-3"></i> Pengumuman Publik
+                </h2>
+            </div>
+            <span class="text-xs bg-pgri-red/10 text-pgri-red font-semibold px-3 py-1 rounded-full">Publik & Anggota</span>
+        </div>
+        
+        <div id="pengumuman-list" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Data Pengumuman dari JS -->
+        </div>
+    </div>
+</section>
+
+<!-- 3. SAMBUTAN KETUA CABANG -->
+<section id="sambutan" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm flex flex-col md:flex-row items-center gap-8">
+            <div class="w-40 h-40 sm:w-48 sm:h-48 flex-shrink-0 rounded-2xl overflow-hidden border-4 border-white shadow-lg relative bg-slate-200">
+                <img id="ketua-foto" src="warta.jpg" onerror="this.onerror=null; this.src='https://placehold.co/400x400/990000/ffffff?text=WARTA';" alt="Foto Ketua Cabang" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 text-center md:text-left">
+                <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Kata Sambutan</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1" id="ketua-nama">WARTA, S.Pd.SD, M.Pd</h2>
+                <p class="text-xs text-pgri-red font-semibold mb-4" id="ketua-jabatan">Ketua PGRI Cabang Tukdana (Masa Bakti XXIII Tahun 2025 – 2030)</p>
+                <blockquote class="text-slate-600 italic text-sm sm:text-base leading-relaxed mb-4" id="ketua-sambutan">
+                    "Loading sambutan..."
+                </blockquote>
+                <div class="inline-flex items-center text-xs text-slate-500 font-medium bg-slate-200/60 px-3 py-1.5 rounded-lg">
+                    <i class="fa-solid fa-quote-left mr-2 text-pgri-gold"></i> PGRI Cabang Kecamatan Tukdana
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. STRUKTUR ORGANISASI (PENGURUS HARIAN & SEKSI BIDANG) -->
+<section id="pengurus" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Susunan Dan Personalia</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Pengurus PGRI Cabang Kecamatan Tukdana</h2>
+            <p class="text-slate-600 text-sm mt-2 font-medium">Masa Bakti XXIII Tahun 2025 – 2030</p>
+        </div>
+
+        <!-- I. Pengurus Harian -->
+        <div class="mb-12">
+            <div class="flex items-center space-x-3 mb-6 border-b border-slate-200 pb-3">
+                <div class="w-8 h-8 rounded-lg bg-pgri-red/10 flex items-center justify-center text-pgri-red font-bold">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">I. Pengurus Harian</h3>
+            </div>
+            <div id="pengurus-harian-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Data Pengurus Harian dari JS -->
+            </div>
+        </div>
+
+        <!-- II. Seksi-Seksi / Bidang-Bidang -->
+        <div class="mt-8">
+            <div class="flex items-center space-x-3 mb-6 border-b border-slate-200 pb-3">
+                <div class="w-8 h-8 rounded-lg bg-pgri-gold/20 flex items-center justify-center text-amber-700 font-bold">
+                    <i class="fa-solid fa-sitemap"></i>
+                </div>
+                <h3 class="text-xl font-bold text-slate-800">II. Seksi-Seksi Bidang Pelaksana Organisasi</h3>
+            </div>
+            <div id="pengurus-seksi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <!-- Data Seksi-seksi dari JS -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. DATA RANTING DAN KETUA RANTING (12 RANTING) -->
+<section id="ranting" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+            <div>
+                <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Unit Kerja</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Data Ranting & Ketua Ranting</h2>
+                <p class="text-slate-600 text-sm mt-1">Daftar 12 Ranting sekolah dan jenjang dinas di bawah PGRI Cabang Tukdana.</p>
+            </div>
+            <div class="mt-4 md:mt-0 text-sm font-semibold text-slate-600 bg-slate-100 px-4 py-2 rounded-xl">
+                Total Wilayah: <span id="total-ranting" class="text-pgri-red font-bold text-base">12</span> Ranting
+            </div>
+        </div>
+
+        <!-- Tabel Data Ranting -->
+        <div class="overflow-hidden border border-slate-200 rounded-xl shadow-sm bg-white">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-600">
+                    <thead class="bg-slate-100 text-slate-800 font-semibold uppercase text-xs tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="py-4 px-6 w-16 text-center">No</th>
+                            <th class="py-4 px-6">Nama Ranting</th>
+                            <th class="py-4 px-6">Ketua Ranting</th>
+                            <th class="py-4 px-6">Kategori / Unit</th>
+                            <th class="py-4 px-6 text-center">Estimasi Anggota</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ranting-table-body" class="divide-y divide-slate-100">
+                        <!-- Data 12 Ranting dari JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. AGENDA DAN KEGIATAN (SLIDER DUA FOTO PER KEGIATAN) -->
+<section id="agenda" class="py-16 bg-slate-50 border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mb-8">
+            <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Jadwal Organisasi</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 flex items-center">
+                <i class="fa-regular fa-calendar-check text-pgri-red mr-3"></i> Agenda & Dokumentasi Kegiatan
+            </h2>
+            <p class="text-slate-600 text-sm mt-1">Jadwal kegiatan resmi PGRI Cabang Tukdana beserta galeri foto dokumentasi.</p>
+        </div>
+        
+        <div id="agenda-list" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Data Agenda dari JS -->
+        </div>
+    </div>
+</section>
+
+<!-- 7. SEKRETARIAT PGRI CABANG TUKDANA & INFORMASI KONTAK -->
+<section id="lokasi" class="py-16 bg-white border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Lokasi Fisik</span>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Sekretariat PGRI Cabang Tukdana</h2>
+            <p class="text-slate-600 text-sm mt-2">Pusat pelayanan administrasi dan koordinasi organisasi PGRI Kecamatan Tukdana.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            <!-- Info Kontak -->
+            <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl space-y-4 shadow-sm">
+                <h3 class="font-bold text-slate-900 text-lg mb-2 flex items-center">
+                    <i class="fa-solid fa-building text-pgri-red mr-2"></i> Informasi Kontak
+                </h3>
+                <div class="flex items-start space-x-3 text-sm text-slate-600">
+                    <i class="fa-solid fa-location-dot text-pgri-red mt-1"></i>
+                    <span id="alamat-kantor">Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat</span>
+                </div>
+                <div class="flex items-center space-x-3 text-sm text-slate-600">
+                    <i class="fa-solid fa-phone text-pgri-red"></i>
+                    <span id="telepon-kantor">0812-3456-7890</span>
+                </div>
+                <div class="flex items-center space-x-3 text-sm text-slate-600">
+                    <i class="fa-solid fa-envelope text-pgri-red"></i>
+                    <span id="email-kantor">admin@pgricabangtukdana.org</span>
+                </div>
+                <div class="pt-4 border-t border-slate-200">
+                    <a id="btn-maps" href="https://maps.app.goo.gl/VhSVdg9e6VJirFWf6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-pgri-red text-white text-xs font-semibold hover:bg-pgri-redhover transition shadow-sm">
+                        <i class="fa-solid fa-map-location-dot mr-2"></i> Buka Peta Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <!-- Google Maps Embed -->
+            <div class="lg:col-span-2 rounded-2xl overflow-hidden border border-slate-200 shadow-sm h-80 relative group">
+                <iframe id="maps-iframe" class="w-full h-full border-0" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.887227653245!2d108.23838!3d-6.5298155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ec5688d011f0d%3A0x401e8f1fc28c110!2sTukdana%2C%20Indramayu%20Regency%2C%20West%20Java!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                    allowfullscreen="" loading="lazy"></iframe>
+                <a href="https://maps.app.goo.gl/VhSVdg9e6VJirFWf6" target="_blank" rel="noopener noreferrer" class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-lg shadow border border-slate-200 backdrop-blur">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-pgri-red mr-1"></i> Buka Aplikasi Maps
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+        <div class="flex justify-center space-x-6 mb-4">
+            <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-facebook text-xl"></i></a>
+            <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-youtube text-xl"></i></a>
+            <a href="#" class="hover:text-amber-400 transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+        </div>
+        <p>© 2026 SIPGRI Cabang Tukdana. Masa Bakti XXIII (2025 - 2030).</p>
+    </div>
+</footer>
+
+<!-- Modal Login System -->
+<div id="loginModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+        <div class="text-center mb-6">
+            <div class="w-12 h-12 rounded-full bg-pgri-red text-white flex items-center justify-center mx-auto mb-3 font-bold text-xl border-2 border-pgri-gold">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900">Portal SIPGRI Tukdana</h3>
+            <p class="text-xs text-slate-500 mt-1">Sistem Informasi Terintegrasi Google Spreadsheet Backend</p>
+        </div>
+        <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs mb-4 leading-relaxed">
+            <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i> Modul Login (Anggota, Bendahara, Sekretaris, Ketua Ranting & Admin) akan terhubung pada backend <strong>Google Apps Script</strong>.
+        </div>
+        <button onclick="closeLoginModal()" class="w-full py-2.5 bg-slate-800 text-white font-semibold text-sm rounded-xl hover:bg-slate-700 transition">
+            Tutup Jendela
+        </button>
+    </div>
+</div>
+
+<script>
+    let dataPublic = {
+        "profil_cabang": {
+            "nama_cabang": "PGRI Cabang Tukdana",
+            "visi": "Mewujudkan pengelolaan organisasi PGRI Cabang Tukdana yang modern, transparan, profesional, dan terdigitalisasi",
+            "bg_header": "bg-header.jpg",
+            "sambutan_ketua": {
+                "nama": "WARTA, S.Pd.SD, M.Pd",
+                "jabatan": "Ketua PGRI Cabang Tukdana (Masa Bakti XXIII 2025 – 2030)",
+                "foto": "warta.jpg",
+                "teks": "Selamat datang di Portal Resmi Sistem Informasi PGRI Cabang Tukdana (SIPGRI). Portal ini dikembangkan untuk mewujudkan transparansi, profesionalisme, serta pusat administrasi digital bagi seluruh pengurus cabang dan anggota di 12 ranting se-Kecamatan Tukdana."
+            },
+            "kontak": {
+                "alamat": "Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat",
+                "telepon": "0812-3456-7890",
+                "email": "admin@pgricabangtukdana.org",
+                "maps_url": "https://maps.app.goo.gl/VhSVdg9e6VJirFWf6"
+            }
+        },
+        "pengurus_harian": [
+            { "jabatan": "KETUA", "nama": "WARTA, S.Pd.SD, M.Pd", "foto": "warta.jpg" },
+            { "jabatan": "WAKIL KETUA I", "nama": "TASRIPIN, S.Pd.", "foto": "tasripin.jpg" },
+            { "jabatan": "WAKIL KETUA II", "nama": "SARWA, S.Pd.SD", "foto": "sarwa.jpg" },
+            { "jabatan": "SEKRETARIS", "nama": "NURKASAN, S.Pd.", "foto": "nurkasan.jpg" },
+            { "jabatan": "WAKIL SEKRETARIS", "nama": "TOKID HERYANTO, S.Pd", "foto": "tokid.jpg" },
+            { "jabatan": "BENDAHARA", "nama": "PUJI ASTUTI, S.Pd.SD", "foto": "puji.jpg" },
+            { "jabatan": "WAKIL BENDAHARA", "nama": "NANA RUSMANA, S.Pd., M.Pd", "foto": "nana.jpg" }
+        ],
+        "pengurus_seksi": [
+            { "bidang": "KADERISASI DAN ORGANISASI", "nama": "KAPIDIN, S.Pd., M.Pd.", "foto": "kapidin.jpg" },
+            { "bidang": "PENGEMBANGAN PROFESI DAN KARIR GURU, PENDIDIK DAN TENAGA KEPENDIDIKAN", "nama": "NOVA NURMALA DEWI, S.Pd.SD", "foto": "nova.jpg" },
+            { "bidang": "PENEGAKAN KODE ETIK DAN ADVOKASI", "nama": "EKA ARYANTO, S.Pd.", "foto": "eka.jpg" },
+            { "bidang": "BANTUAN HUKUM DAN PERLINDUNGAN PROFESI", "nama": "MULYADI, S.Pd.", "foto": "mulyadi.jpg" },
+            { "bidang": "PENELITIAN DAN PENGABDIAN MASYARAKAT", "nama": "AMAN, S.Pd.I", "foto": "aman.jpg" },
+            { "bidang": "PEMBINAAN DAN PENGEMBANGAN LEMBAGA PENDIDIKAN", "nama": "EDI JUHAEDI SUDRAJAT, S.Pd.SD", "foto": "edi.jpg" },
+            { "bidang": "KERJA SAMA DAN PENEGMBANGAN USAHA", "nama": "TARMA, S.Pd.", "foto": "tarma.jpg" },
+            { "bidang": "KESEJAHTERAAN DAN KETENAGAKERJAAN", "nama": "HJ. SITI NURKHASANAH, S.Pd.", "foto": "siti-n.jpg" },
+            { "bidang": "PEMBERDAYAAN PEREMPUAN", "nama": "SITI MUAROFAH, S.Pd.SD", "foto": "siti-m.jpg" },
+            { "bidang": "KEANGGOTAAN DAN DIGITALISASI ORGANISASI", "nama": "IHYA ULUMUDIN, S.Pd.", "foto": "ihya.jpg" },
+            { "bidang": "OLAHRAGA, SENI DAN BUDAYA", "nama": "ELLIS SUSILAWATI, S.Pd.", "foto": "ellis.jpg" },
+            { "bidang": "PEMBINAAN MENTAL DAN KARAKTER BANGSA", "nama": "SANTO, S.Pd.SD", "foto": "santo.jpg" },
+            { "bidang": "PEMBINAAN KEROHANIAN DAN KARAKTER BANGSA", "nama": "RAKIDI, S.Pd.I", "foto": "rakidi.jpg" },
+            { "bidang": "HUBUNGAN LEMBAGA/INSTANSI DAN ORGANISASI LAIN", "nama": "NURVITA DEWI.S, M.Pd", "foto": "nurvita.jpg" },
+            { "bidang": "PEMBINAAN DAN PENGEMBANGAN PAUDNI, DAN NON FORMAL", "nama": "EMAH, S.Pd.", "foto": "emah.jpg" }
+        ],
+        "ranting": [
+            { "no": 1, "nama": "Ranting TK", "ketua": "Ketua Ranting TK", "unit": "PAUD / TK", "anggota": 25 },
+            { "no": 2, "nama": "Ranting Lajer", "ketua": "Ketua Ranting Lajer", "unit": "SD / Sekolah Dasar", "anggota": 30 },
+            { "no": 3, "nama": "Ranting Sukadana", "ketua": "Ketua Ranting Sukadana", "unit": "SD / Sekolah Dasar", "anggota": 28 },
+            { "no": 4, "nama": "Ranting Sukaperna", "ketua": "Ketua Ranting Sukaperna", "unit": "SD / Sekolah Dasar", "anggota": 26 },
+            { "no": 5, "nama": "Ranting Karker", "ketua": "Ketua Ranting Karker", "unit": "SD / Sekolah Dasar", "anggota": 24 },
+            { "no": 6, "nama": "Ranting Sukamulya", "ketua": "Ketua Ranting Sukamulya", "unit": "SD / Sekolah Dasar", "anggota": 27 },
+            { "no": 7, "nama": "Ranting Tukdana & Mekarsari", "ketua": "Ketua Ranting Tukdana & Mekarsari", "unit": "SD / Sekolah Dasar", "anggota": 35 },
+            { "no": 8, "nama": "Ranting Rancajawat", "ketua": "Ketua Ranting Rancajawat", "unit": "SD / Sekolah Dasar", "anggota": 22 },
+            { "no": 9, "nama": "Ranting Boga", "ketua": "Ketua Ranting Boga", "unit": "SD / Sekolah Dasar", "anggota": 20 },
+            { "no": 10, "nama": "Ranting Cangko & Pagedangan", "ketua": "Ketua Ranting Cangko & Pagedangan", "unit": "SD / Sekolah Dasar", "anggota": 32 },
+            { "no": 11, "nama": "Ranting SMP", "ketua": "Ketua Ranting SMP", "unit": "SMP / Sederajat", "anggota": 48 },
+            { "no": 12, "nama": "Ranting SMA", "ketua": "Ketua Ranting SMA", "unit": "SMA / SMK", "anggota": 42 }
+        ],
+        "agenda": [
+            {
+                "id": 1,
+                "tanggal": "15 Ags 2026",
+                "judul": "Sosialisasi & Pelatihan Portal SIPGRI Cabang Tukdana",
+                "lokasi": "Gedung PGRI Cabang Tukdana",
+                "deskripsi": "Pelatihan penggunaan portal administrasi digital untuk seluruh pengurus ranting dan pengurus harian cabang.",
+                "foto": ["rapat1.jpg", "rapat2.jpg"]
+            },
+            {
+                "id": 2,
+                "tanggal": "25 Nov 2026",
+                "judul": "Peringatan Hari Guru Nasional & HUT PGRI Ke-81",
+                "lokasi": "Kecamatan Tukdana",
+                "deskripsi": "Upacara peringatan HGN dan panggung seni budaya pendidik se-Kecamatan Tukdana.",
+                "foto": ["hgn1.jpg", "hgn2.jpg"]
+            }
+        ],
+        "pengumuman": [
+            {
+                "tanggal": "01 Ags 2026",
+                "judul": "Peluncuran Sistem Informasi SIPGRI Cabang Tukdana",
+                "ringkasan": "Sistem Informasi Manajemen dan Iuran Anggota PGRI Cabang Tukdana berbasis digital resmi diaktifkan. Pengurus Ranting dapat berkoordinasi dengan Sekretaris & Bendahara Cabang."
+            },
+            {
+                "tanggal": "28 Jul 2026",
+                "judul": "Pembaruan Data Anggota Masa Bakti XXIII (2025 - 2030)",
+                "ringkasan": "Diharapkan seluruh Ketua Ranting melakukan validasi data keanggotaan unit kerja masing-masing melalui Portal Administrasi."
+            }
+        ]
+    };
+
+    // Simpan posisi slide foto untuk masing-masing agenda
+    const agendaSlideState = {};
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const response = await fetch('data-public.json');
+            if (response.ok) {
+                const jsonFetched = await response.json();
+                dataPublic = jsonFetched;
+            }
+        } catch (err) {
+            console.log('Menggunakan data internal (fallback)');
+        }
+
+        renderAllSections();
+    });
+
+    function renderAllSections() {
+        renderHeader();
+        renderPengumuman();
+        renderSambutan();
+        renderPengurusHarian();
+        renderPengurusSeksi();
+        renderRanting();
+        renderAgenda();
+    }
+
+    function renderHeader() {
+        const p = dataPublic.profil_cabang;
+        if(p.visi) {
+            document.getElementById('hero-visi').innerText = `"${p.visi}"`;
+        }
+        if(p.bg_header) {
+            document.getElementById('hero-bg').style.backgroundImage = `url('${p.bg_header}')`;
+        }
+    }
+
+    function renderPengumuman() {
+        const list = document.getElementById('pengumuman-list');
+        list.innerHTML = '';
+
+        dataPublic.pengumuman.forEach(p => {
+            const item = `
+                <div class="bg-white border border-amber-200 p-5 rounded-2xl shadow-sm hover:shadow-md transition">
+                    <div class="flex items-center space-x-2 text-xs font-semibold text-amber-700 mb-2">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>${p.tanggal}</span>
+                    </div>
+                    <h3 class="font-bold text-slate-900 text-base mb-2">${p.judul}</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${p.ringkasan}</p>
+                </div>
+            `;
+            list.innerHTML += item;
+        });
+    }
+
+    function renderSambutan() {
+        const s = dataPublic.profil_cabang.sambutan_ketua;
+        document.getElementById('ketua-nama').innerText = s.nama;
+        document.getElementById('ketua-jabatan').innerText = s.jabatan;
+        document.getElementById('ketua-sambutan').innerText = `"${s.teks}"`;
+        
+        const imgKetua = document.getElementById('ketua-foto');
+        imgKetua.src = s.foto;
+        imgKetua.onerror = () => {
+            imgKetua.src = `https://placehold.co/400x400/990000/ffffff?text=${encodeURIComponent(s.nama)}`;
+        };
+
+        const k = dataPublic.profil_cabang.kontak;
+        document.getElementById('alamat-kantor').innerText = k.alamat;
+        document.getElementById('telepon-kantor').innerText = k.telepon;
+        document.getElementById('email-kantor').innerText = k.email;
+        if(k.maps_url) {
+            document.getElementById('btn-maps').href = k.maps_url;
+        }
+    }
+
+    function renderPengurusHarian() {
+        const container = document.getElementById('pengurus-harian-grid');
+        container.innerHTML = '';
+
+        dataPublic.pengurus_harian.forEach(p => {
+            const card = `
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition text-center p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="w-20 h-20 rounded-full mx-auto bg-slate-100 overflow-hidden border-2 border-pgri-gold shadow mb-3">
+                            <img src="${p.foto}" alt="${p.nama}" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/300x300/1e293b/ffffff?text=${encodeURIComponent(p.nama.split(',')[0])}';" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                        <span class="text-[11px] font-extrabold text-pgri-red uppercase tracking-wider block mb-1">${p.jabatan}</span>
+                        <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">${p.nama}</h4>
+                    </div>
+                    <div class="mt-4 pt-2 border-t border-slate-100 text-[10px] text-slate-400 font-medium uppercase">
+                        Pengurus Harian
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    }
+
+    function renderPengurusSeksi() {
+        const container = document.getElementById('pengurus-seksi-grid');
+        container.innerHTML = '';
+
+        dataPublic.pengurus_seksi.forEach((s, idx) => {
+            const card = `
+                <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition flex items-center space-x-3">
+                    <div class="w-14 h-14 rounded-full bg-slate-100 overflow-hidden border border-slate-300 flex-shrink-0">
+                        <img src="${s.foto}" alt="${s.nama}" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/200x200/334155/ffffff?text=${encodeURIComponent(s.nama.split(',')[0])}';" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block truncate mb-0.5">Bidang ${idx + 1}</span>
+                        <h5 class="font-bold text-slate-800 text-xs sm:text-sm leading-tight mb-1 line-clamp-2">${s.bidang}</h5>
+                        <p class="text-xs font-semibold text-pgri-red truncate"><i class="fa-solid fa-user mr-1 text-[10px]"></i> ${s.nama}</p>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    }
+
+    function renderRanting() {
+        const tbody = document.getElementById('ranting-table-body');
+        document.getElementById('total-ranting').innerText = dataPublic.ranting.length;
+        tbody.innerHTML = '';
+
+        dataPublic.ranting.forEach(r => {
+            const row = `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="py-3.5 px-6 font-bold text-slate-400 text-center">${r.no}</td>
+                    <td class="py-3.5 px-6 font-bold text-slate-900">${r.nama}</td>
+                    <td class="py-3.5 px-6 text-slate-700">${r.ketua}</td>
+                    <td class="py-3.5 px-6"><span class="px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">${r.unit}</span></td>
+                    <td class="py-3.5 px-6 text-center font-bold text-pgri-red">${r.anggota} Anggota</td>
+                </tr>
+            `;
+            tbody.innerHTML += row;
+        });
+    }
+
+    function renderAgenda() {
+        const list = document.getElementById('agenda-list');
+        list.innerHTML = '';
+
+        dataPublic.agenda.forEach((a, idx) => {
+            agendaSlideState[idx] = 0;
+            const fotos = a.foto || [];
+            
+            const card = `
+                <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+                    <!-- Slider Gambar -->
+                    <div class="relative h-48 sm:h-56 bg-slate-900 group">
+                        <img id="agenda-img-${idx}" src="${fotos[0] || 'rapat1.jpg'}" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Dokumentasi+Agenda+${idx+1}';" 
+                             class="w-full h-full object-cover transition-all duration-300">
+                        
+                        ${fotos.length > 1 ? `
+                            <button onclick="prevAgendaFoto(${idx})" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center transition">
+                                <i class="fa-solid fa-chevron-left text-xs"></i>
+                            </button>
+                            <button onclick="nextAgendaFoto(${idx})" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/80 text-white w-8 h-8 rounded-full flex items-center justify-center transition">
+                                <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                            <div id="agenda-dots-${idx}" class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1.5">
+                                ${fotos.map((_, fIdx) => `
+                                    <span class="w-2 h-2 rounded-full ${fIdx === 0 ? 'bg-amber-400' : 'bg-white/60'} transition"></span>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+
+                        <div class="absolute top-3 left-3 bg-pgri-red/90 backdrop-blur text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow">
+                            <i class="fa-regular fa-calendar mr-1"></i> ${a.tanggal}
+                        </div>
+                    </div>
+
+                    <!-- Info Agenda -->
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <h4 class="font-bold text-slate-900 text-base mb-1.5">${a.judul}</h4>
+                            <p class="text-xs text-slate-500 mb-3"><i class="fa-solid fa-location-dot mr-1 text-pgri-red"></i> ${a.lokasi}</p>
+                            <p class="text-xs text-slate-600 leading-relaxed">${a.deskripsi || ''}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            list.innerHTML += card;
+        });
+    }
+
+    function prevAgendaFoto(agendaIdx) {
+        const fotos = dataPublic.agenda[agendaIdx].foto;
+        agendaSlideState[agendaIdx] = (agendaSlideState[agendaIdx] - 1 + fotos.length) % fotos.length;
+        updateAgendaSlide(agendaIdx);
+    }
+
+    function nextAgendaFoto(agendaIdx) {
+        const fotos = dataPublic.agenda[agendaIdx].foto;
+        agendaSlideState[agendaIdx] = (agendaSlideState[agendaIdx] + 1) % fotos.length;
+        updateAgendaSlide(agendaIdx);
+    }
+
+    function updateAgendaSlide(agendaIdx) {
+        const currentIdx = agendaSlideState[agendaIdx];
+        const fotoName = dataPublic.agenda[agendaIdx].foto[currentIdx];
+        const imgElem = document.getElementById(`agenda-img-${agendaIdx}`);
+        
+        imgElem.src = fotoName;
+        imgElem.onerror = () => {
+            imgElem.src = `https://placehold.co/600x400/1e293b/ffffff?text=Dokumentasi+${currentIdx+1}`;
+        };
+
+        const dotsContainer = document.getElementById(`agenda-dots-${agendaIdx}`);
+        if (dotsContainer) {
+            const dots = dotsContainer.querySelectorAll('span');
+            dots.forEach((dot, dIdx) => {
+                if (dIdx === currentIdx) {
+                    dot.className = 'w-2 h-2 rounded-full bg-amber-400 transition';
+                } else {
+                    dot.className = 'w-2 h-2 rounded-full bg-white/60 transition';
+                }
+            });
+        }
+    }
+
+    function openLoginModal() {
+        document.getElementById('loginModal').classList.remove('hidden');
+    }
+
+    function closeLoginModal() {
+        document.getElementById('loginModal').classList.add('hidden');
+    }
+</script>
