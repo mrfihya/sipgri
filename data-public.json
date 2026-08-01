@@ -60,15 +60,15 @@
 "agenda": [
 {
 "id": 1,
-"tanggal": "25 Juli 2026",
 "tanggal": "23 Januari 2026",
 "judul": "Pelantikan Pengurus",
-"lokasi": "Kecamatan Tukdana",
-"deskripsi": "Pelantikan Pengurus PGRI Cabang Tukdana.",
+"lokasi": "Gedung PGRI Cabang Tukdana",
+"deskripsi": "Pelantikan Pengurus PGRI Cabang Tukdana Masa Bakti XXIII Tahun 2025-2030",
 "foto": ["hgn1.jpg", "hgn2.jpg"]
 },
 {
 "id": 2,
+"tanggal": "25 Juli 2026",
 "judul": "Penyerahan SK PGRI Ranting Cabang Tukdana",
 "lokasi": "Gedung PGRI Cabang Tukdana",
 "deskripsi": "Penyerahan SK PGRI Ranting Cabang Tukdana Masa Bakti XXIII Tahun 2025-2030.",
