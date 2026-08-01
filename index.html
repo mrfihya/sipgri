@@ -62,10 +62,10 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo & Brand -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 rounded-2xl bg-pgri-red flex items-center justify-center text-white shadow-md font-bold text-xl border-2 border-pgri-gold overflow-hidden">
-                        <img id="brand-logo" src="logo.png" alt="Logo PGRI" class="w-full h-full object-cover" 
+                    <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-800 font-bold text-xl overflow-hidden p-1">
+                        <img id="brand-logo" src="logo.png" alt="Logo PGRI" class="w-full h-full object-contain" 
                              onerror="this.onerror=null; this.style.display='none'; document.getElementById('brand-icon-fallback').style.display='flex';">
-                        <div id="brand-icon-fallback" class="hidden w-full h-full items-center justify-center text-white">
+                        <div id="brand-icon-fallback" class="hidden w-full h-full items-center justify-center text-pgri-red">
                             <i class="fa-solid fa-graduation-cap"></i>
                         </div>
                     </div>
@@ -99,21 +99,21 @@
     <!-- 1. HERO HEADER WITH BACKGROUND PHOTO -->
     <section id="beranda" class="relative bg-slate-900 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
         <!-- Background Image -->
-        <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center opacity-30"></div>
-        <div class="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/90 via-slate-900/80 to-slate-900"></div>
+        <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center opacity-50"></div>
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/90"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
-                <span class="inline-block py-1.5 px-4 rounded-full bg-pgri-red/40 border border-pgri-gold/50 text-amber-200 text-xs font-bold uppercase tracking-widest mb-4">
+                <span class="inline-block py-1.5 px-4 rounded-full bg-pgri-red/60 border border-pgri-gold/50 text-amber-200 text-xs font-bold uppercase tracking-widest mb-4 backdrop-blur-sm">
                     <i class="fa-solid fa-building-columns mr-1.5"></i> Portal Resmi PGRI Cabang Tukdana
                 </span>
                 
                 <!-- Judul Utama & Visi -->
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-white">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-4 text-white drop-shadow-md">
                     Sistem Informasi PGRI Cabang Tukdana
                 </h1>
                 
-                <p id="hero-visi" class="text-base sm:text-xl text-amber-300 font-medium max-w-3xl mx-auto leading-relaxed mb-8 italic">
+                <p id="hero-visi" class="text-base sm:text-xl text-amber-300 font-medium max-w-3xl mx-auto leading-relaxed mb-8 italic drop-shadow">
                     "Mewujudkan pengelolaan organisasi PGRI Cabang Tukdana yang modern, transparan, profesional, dan terdigitalisasi"
                 </p>
 
@@ -265,7 +265,7 @@
     <section id="lokasi" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Lokasi Fisik</span>
+                <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Lokasi Fisik & Layanan</span>
                 <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Sekretariat PGRI Cabang Tukdana</h2>
                 <p class="text-slate-600 text-sm mt-2">Pusat pelayanan administrasi dan koordinasi organisasi PGRI Kecamatan Tukdana.</p>
             </div>
@@ -273,7 +273,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
                 <!-- Foto Fisik Kantor -->
                 <div class="bg-slate-100 border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col justify-between min-h-[260px]">
-                    <div class="relative w-full h-full min-h-[220px] bg-slate-200">
+                    <div class="relative w-full h-full min-h-[240px] bg-slate-200">
                         <img id="kantor-foto" src="kantor.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Gedung+Sekretariat+PGRI+Tukdana';" alt="Foto Gedung Kantor" class="w-full h-full object-cover">
                         <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-900/80 to-transparent p-4">
                             <span class="text-white font-bold text-xs"><i class="fa-solid fa-camera mr-1 text-pgri-gold"></i> Gedung Kantor Sekretariat</span>
@@ -281,40 +281,47 @@
                     </div>
                 </div>
 
-                <!-- Info Kontak -->
+                <!-- Info Kontak & Jam Operasional -->
                 <div class="bg-slate-50 border border-slate-200 p-6 rounded-2xl space-y-4 shadow-sm flex flex-col justify-between">
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-3 flex items-center">
-                            <i class="fa-solid fa-building text-pgri-red mr-2"></i> Informasi Kontak
+                            <i class="fa-solid fa-building text-pgri-red mr-2"></i> Informasi Kontak & Layanan
                         </h3>
-                        <div class="space-y-3">
+                        <div class="space-y-3.5">
                             <div class="flex items-start space-x-3 text-sm text-slate-600">
-                                <i class="fa-solid fa-location-dot text-pgri-red mt-1"></i>
+                                <i class="fa-solid fa-location-dot text-pgri-red mt-1 flex-shrink-0"></i>
                                 <span id="alamat-kantor">Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat</span>
                             </div>
                             <div class="flex items-center space-x-3 text-sm text-slate-600">
-                                <i class="fa-solid fa-phone text-pgri-red"></i>
+                                <i class="fa-solid fa-phone text-pgri-red flex-shrink-0"></i>
                                 <span id="telepon-kantor">0812-3456-7890</span>
                             </div>
                             <div class="flex items-center space-x-3 text-sm text-slate-600">
-                                <i class="fa-solid fa-envelope text-pgri-red"></i>
+                                <i class="fa-solid fa-envelope text-pgri-red flex-shrink-0"></i>
                                 <span id="email-kantor">admin@pgricabangtukdana.org</span>
+                            </div>
+                            <div class="flex items-start space-x-3 text-sm text-slate-600 pt-1 border-t border-slate-200/80">
+                                <i class="fa-regular fa-clock text-pgri-red mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-semibold block text-slate-800 text-xs uppercase">Jam Pelayanan Sekretariat:</span>
+                                    <span class="text-xs">Senin - Jumat: 08.00 - 15.00 WIB</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="pt-4 border-t border-slate-200">
-                        <a id="btn-maps" href="https://maps.app.goo.gl/VhSVdg9e6VJirFWf6" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-pgri-red text-white text-xs font-semibold hover:bg-pgri-redhover transition shadow-sm">
+                        <a id="btn-maps" href="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-pgri-red text-white text-xs font-semibold hover:bg-pgri-redhover transition shadow-sm">
                             <i class="fa-solid fa-map-location-dot mr-2"></i> Buka Peta Google Maps
                         </a>
                     </div>
                 </div>
 
-                <!-- Google Maps Embed -->
+                <!-- Google Maps Embed Presisi Koordinat -6.5527231360270095, 108.28111835673047 -->
                 <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm min-h-[260px] relative group">
                     <iframe id="maps-iframe" class="w-full h-full border-0 min-h-[260px]" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.887227653245!2d108.23838!3d-6.5298155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6ec5688d011f0d%3A0x401e8f1fc28c110!2sTukdana%2C%20Indramayu%20Regency%2C%20West%20Java!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" 
+                        src="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047&hl=id&z=17&output=embed" 
                         allowfullscreen="" loading="lazy"></iframe>
-                    <a href="https://maps.app.goo.gl/VhSVdg9e6VJirFWf6" target="_blank" rel="noopener noreferrer" class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-lg shadow border border-slate-200 backdrop-blur">
+                    <a href="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047" target="_blank" rel="noopener noreferrer" class="absolute bottom-3 right-3 bg-white/90 hover:bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-lg shadow border border-slate-200 backdrop-blur">
                         <i class="fa-solid fa-arrow-up-right-from-square text-pgri-red mr-1"></i> Buka Aplikasi Maps
                     </a>
                 </div>
@@ -341,14 +348,14 @@
                 <i class="fa-solid fa-xmark text-xl"></i>
             </button>
             <div class="text-center mb-6">
-                <div class="w-12 h-12 rounded-2xl bg-pgri-red text-white flex items-center justify-center mx-auto mb-3 font-bold text-xl border-2 border-pgri-gold">
-                    <i class="fa-solid fa-lock"></i>
+                <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 text-pgri-red flex items-center justify-center mx-auto mb-3 font-bold text-xl shadow-sm p-1">
+                    <img src="logo.png" alt="Logo" class="w-full h-full object-contain" onerror="this.onerror=null; this.src='https://placehold.co/100x100/990000/ffffff?text=PGRI';">
                 </div>
                 <h3 class="text-xl font-bold text-slate-900">Portal SIPGRI Tukdana</h3>
                 <p class="text-xs text-slate-500 mt-1">Sistem Informasi Terintegrasi Google Spreadsheet Backend</p>
             </div>
             <div class="p-4 bg-amber-50 border border-amber-200 rounded-xl text-amber-900 text-xs mb-4 leading-relaxed">
-                <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i> Modul Login (Anggota, Bendahara, Sekretaris, Ketua Ranting & Admin) akan terhubung pada backend <strong>Google Apps Script</strong>.
+                <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i> Modul Login (Anggota, Bendahara, Sekretaris, Ketua Ranting & Admin) terhubung pada backend <strong>Google Apps Script</strong>.
             </div>
             <button onclick="closeLoginModal()" class="w-full py-2.5 bg-slate-800 text-white font-semibold text-sm rounded-xl hover:bg-slate-700 transition">
                 Tutup Jendela
@@ -373,7 +380,7 @@
                     "alamat": "Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat",
                     "telepon": "0812-3456-7890",
                     "email": "admin@pgricabangtukdana.org",
-                    "maps_url": "https://maps.app.goo.gl/VhSVdg9e6VJirFWf6",
+                    "maps_url": "https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047",
                     "foto_kantor": "kantor.jpg"
                 }
             },
@@ -540,7 +547,7 @@
                 const card = `
                     <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition text-center p-5 flex flex-col justify-between">
                         <div>
-                            <div class="w-24 h-32 rounded-2xl mx-auto bg-slate-100 overflow-hidden border-2 border-pgri-gold shadow mb-3">
+                            <div class="w-28 h-36 rounded-2xl mx-auto bg-slate-100 overflow-hidden border-2 border-pgri-gold shadow mb-3">
                                 <img src="${p.foto}" alt="${p.nama}" 
                                      onerror="this.onerror=null; this.src='https://placehold.co/300x400/1e293b/ffffff?text=${encodeURIComponent(p.nama.split(',')[0])}';" 
                                      class="w-full h-full object-cover">
