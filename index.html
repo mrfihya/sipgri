@@ -54,19 +54,26 @@
             background-size: 24px 24px;
         }
         @media print {
-            body * { visibility: hidden !important; }
-            .print-only-letter, .print-only-letter * { visibility: visible !important; }
-            .print-only-letter {
+            .no-print, header, footer, #dashboard-tabs, #top-financial-summary, #loginModal, #importModal {
+                display: none !important;
+            }
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            body.printing-letter #app-dashboard,
+            body.printing-letter #public-view {
+                display: none !important;
+            }
+            body.printing-letter #surat-printable-container {
+                display: block !important;
                 position: absolute !important;
                 left: 0 !important;
                 top: 0 !important;
                 width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-                box-shadow: none !important;
-                border: none !important;
             }
-            .no-print { display: none !important; }
         }
     </style>
 </head>
@@ -105,9 +112,9 @@
                             <a href="#lokasi" class="hover:text-pgri-red transition-colors">Sekretariat</a>
                         </nav>
 
-                        <!-- Login Action Button -->
+                        <!-- Login Action Button (Failsafe style) -->
                         <div class="flex items-center space-x-3">
-                            <button id="btn-portal-trigger" onclick="openLoginModal()" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm text-white bg-pgri-red hover:bg-pgri-redhover shadow-md hover:shadow-lg transition-all transform active:scale-95">
+                            <button id="btn-portal-trigger" onclick="openLoginModal()" style="background-color: #990000; color: #ffffff;" class="inline-flex items-center justify-center px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all transform active:scale-95">
                                 <i class="fa-solid fa-right-to-bracket mr-2"></i> Akses Portal Administrasi
                             </button>
                         </div>
@@ -135,7 +142,7 @@
                         </p>
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4">
-                            <button onclick="openLoginModal()" class="px-7 py-3.5 rounded-xl font-bold text-sm bg-pgri-red hover:bg-pgri-redhover text-white transition shadow-lg flex items-center justify-center border border-amber-400/30">
+                            <button onclick="openLoginModal()" style="background-color: #990000; color: #ffffff;" class="px-7 py-3.5 rounded-xl font-bold text-sm transition shadow-lg flex items-center justify-center border border-amber-400/30">
                                 <i class="fa-solid fa-user-shield mr-2"></i> Akses Portal Administrasi
                             </button>
                             <a href="#pengurus" class="px-7 py-3.5 rounded-xl font-semibold text-sm bg-slate-800/90 border border-slate-700 text-slate-200 hover:bg-slate-700 transition flex items-center justify-center">
@@ -306,7 +313,7 @@
                                 </div>
                             </div>
                             <div class="pt-4 border-t border-slate-200">
-                                <a id="btn-maps" href="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl bg-pgri-red text-white text-xs font-semibold hover:bg-pgri-redhover transition shadow-sm">
+                                <a id="btn-maps" href="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047" target="_blank" rel="noopener noreferrer" style="background-color: #990000; color: #ffffff;" class="inline-flex items-center justify-center w-full py-2.5 px-4 rounded-xl text-xs font-semibold hover:bg-pgri-redhover transition shadow-sm">
                                     <i class="fa-solid fa-map-location-dot mr-2"></i> Buka Peta Google Maps
                                 </a>
                             </div>
@@ -421,7 +428,7 @@
 
                 <div id="login-alert" class="hidden p-3 rounded-xl text-xs font-medium bg-red-50 text-red-700 border border-red-200"></div>
 
-                <button type="submit" id="btn-submit-login" class="w-full py-3 bg-pgri-red text-white font-bold text-sm rounded-xl hover:bg-pgri-redhover transition shadow-md flex items-center justify-center">
+                <button type="submit" id="btn-submit-login" style="background-color: #990000; color: #ffffff;" class="w-full py-3 font-bold text-sm rounded-xl hover:bg-pgri-redhover transition shadow-md flex items-center justify-center">
                     <i class="fa-solid fa-key mr-2"></i> Masuk Ke Portal
                 </button>
             </form>
@@ -438,14 +445,18 @@
                 <i class="fa-solid fa-file-import text-blue-600 mr-2"></i> Impor Massal Data Anggota (Excel / CSV)
             </h3>
             
-            <div class="flex justify-between items-center mb-3">
-                <p class="text-xs text-slate-500">Format Kolom: <code class="bg-slate-100 px-2 py-0.5 rounded text-pgri-red font-bold">NPA | Nama | Gender | TglLahir | UnitKerja | Ranting</code></p>
-                <button onclick="downloadCSVTemplate()" class="px-3 py-1 bg-green-600 hover:bg-green-700 text-white font-bold text-[11px] rounded-lg shadow">
-                    <i class="fa-solid fa-download mr-1"></i> Download Format Excel/CSV
+            <div class="flex flex-wrap justify-between items-center gap-2 mb-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                <div>
+                    <span class="text-xs font-bold text-slate-700 block">Metode 1: Unggah File Excel / CSV</span>
+                    <input type="file" id="file-import-input" accept=".csv, .txt" onchange="handleFileSelectImport(event)" class="text-xs text-slate-500 mt-1">
+                </div>
+                <button onclick="downloadCSVTemplate()" class="px-3 py-1.5 bg-green-600 hover:bg-green-700 text-white font-bold text-[11px] rounded-lg shadow">
+                    <i class="fa-solid fa-download mr-1"></i> Download Format (.csv)
                 </button>
             </div>
 
-            <textarea id="csv-import-text" rows="8" placeholder="Contoh:&#10;3212010	Ahmad Dahlan	L	12051988	SDN 1 Tukdana	Ranting Tukdana & Mekarsari&#10;3212011	Siti Aminah	P	25101990	SDN 2 Lajer	Ranting Lajer" class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 font-mono mb-4 focus:outline-none"></textarea>
+            <p class="text-xs text-slate-500 mb-1">Metode 2: Salin & Tempel Baris Tabel dari Excel / Spreadsheet:</p>
+            <textarea id="csv-import-text" rows="7" placeholder="Format Kolom: NPA | Nama | Gender | TglLahir | UnitKerja | Ranting&#10;&#10;Contoh:&#10;3212010	Ahmad Dahlan	L	12051988	SDN 1 Tukdana	Ranting Tukdana & Mekarsari&#10;3212011	Siti Aminah	P	25101990	SDN 2 Lajer	Ranting Lajer" class="w-full p-3 text-xs border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 font-mono mb-4 focus:outline-none"></textarea>
 
             <div class="flex justify-end space-x-3">
                 <button onclick="closeImportModal()" class="px-4 py-2 bg-slate-200 text-slate-700 font-bold text-xs rounded-xl">Batal</button>
@@ -945,7 +956,7 @@
                             <h3 class="text-lg font-bold text-slate-900 flex items-center">
                                 <i class="fa-solid fa-user-clock text-amber-600 mr-2"></i> Laporan Anggota Belum Bayar Iuran
                             </h3>
-                            <button onclick="window.print()" class="px-4 py-2 bg-slate-800 text-white font-bold text-xs rounded-xl hover:bg-slate-700 no-print">
+                            <button onclick="printReportDocument()" class="px-4 py-2 bg-slate-800 text-white font-bold text-xs rounded-xl hover:bg-slate-700 no-print">
                                 <i class="fa-solid fa-print mr-1"></i> Cetak / Export Laporan
                             </button>
                         </div>
@@ -1219,12 +1230,23 @@
             document.body.removeChild(link);
         }
 
+        function handleFileSelectImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('csv-import-text').value = e.target.result;
+            };
+            reader.readAsText(file);
+        }
+
         function openImportModal() { document.getElementById('importModal').classList.remove('hidden'); }
         function closeImportModal() { document.getElementById('importModal').classList.add('hidden'); }
 
         async function executeImportBatch() {
             const rawText = document.getElementById('csv-import-text').value.trim();
-            if(!rawText) return alert('Tempelkan teks data terlebih dahulu!');
+            if(!rawText) return alert('Tempelkan teks data atau unggah file terlebih dahulu!');
 
             const lines = rawText.split('\n');
             const items = [];
@@ -1326,6 +1348,15 @@
         }
 
         function printOfficialLetter() {
+            document.body.classList.add('printing-letter');
+            window.print();
+            setTimeout(() => {
+                document.body.classList.remove('printing-letter');
+            }, 1000);
+        }
+
+        function printReportDocument() {
+            document.body.classList.remove('printing-letter');
             window.print();
         }
 
