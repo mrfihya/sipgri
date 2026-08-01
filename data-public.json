@@ -13,7 +13,8 @@
 "alamat": "Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat",
 "telepon": "0812-3456-7890",
 "email": "admin@pgricabangtukdana.org",
-"maps_url": "https://maps.app.goo.gl/VhSVdg9e6VJirFWf6"
+"maps_url": "https://maps.app.goo.gl/VhSVdg9e6VJirFWf6",
+"foto_kantor": "kantor.jpg"
 }
 },
 "pengurus_harian": [
@@ -59,19 +60,19 @@
 "agenda": [
 {
 "id": 1,
-"tanggal": "15 Ags 2026",
-"judul": "Sosialisasi & Pelatihan Portal SIPGRI Cabang Tukdana",
-"lokasi": "Gedung PGRI Cabang Tukdana",
-"deskripsi": "Pelatihan penggunaan portal administrasi digital untuk seluruh pengurus ranting dan pengurus harian cabang.",
-"foto": ["rapat1.jpg", "rapat2.jpg"]
+"tanggal": "25 Juli 2026",
+"tanggal": "23 Januari 2026",
+"judul": "Pelantikan Pengurus",
+"lokasi": "Kecamatan Tukdana",
+"deskripsi": "Pelantikan Pengurus PGRI Cabang Tukdana.",
+"foto": ["hgn1.jpg", "hgn2.jpg"]
 },
 {
 "id": 2,
-"tanggal": "25 Nov 2026",
-"judul": "Peringatan Hari Guru Nasional & HUT PGRI Ke-81",
-"lokasi": "Kecamatan Tukdana",
-"deskripsi": "Upacara peringatan HGN dan panggung seni budaya pendidik se-Kecamatan Tukdana.",
-"foto": ["hgn1.jpg", "hgn2.jpg"]
+"judul": "Penyerahan SK PGRI Ranting Cabang Tukdana",
+"lokasi": "Gedung PGRI Cabang Tukdana",
+"deskripsi": "Penyerahan SK PGRI Ranting Cabang Tukdana Masa Bakti XXIII Tahun 2025-2030.",
+"foto": ["rapat1.jpg", "rapat2.jpg"]
 }
 ],
 "pengumuman": [
