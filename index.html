@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIPGRI Cabang Tukdana - Sistem Informasi PGRI Cabang Tukdana</title>
 
-    <!-- Meta Tags Open Graph & Share Preview -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="SIPGRI Cabang Tukdana - Sistem Informasi PGRI Cabang Tukdana">
     <meta property="og:description" content="Mewujudkan pengelolaan organisasi PGRI Cabang Tukdana yang modern, transparan, profesional, dan terdigitalisasi.">
@@ -15,9 +14,7 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <script>
@@ -40,6 +37,11 @@
     </script>
     <style>
         html { scroll-behavior: smooth; }
+        @media print {
+            body * { visibility: hidden; }
+            #print-area, #print-area * { visibility: visible; }
+            #print-area { position: absolute; left: 0; top: 0; width: 100%; }
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
@@ -48,8 +50,6 @@
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                
-                <!-- Brand Logo & Title -->
                 <div class="flex items-center space-x-3">
                     <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center text-slate-800 font-bold text-xl overflow-hidden p-1">
                         <img id="brand-logo" src="logo.png" alt="Logo PGRI" class="w-full h-full object-contain" 
@@ -64,7 +64,6 @@
                     </div>
                 </div>
 
-                <!-- Desktop Navigation Menu -->
                 <nav class="hidden lg:flex items-center space-x-5 text-sm font-medium text-slate-600">
                     <a href="#beranda" class="hover:text-pgri-red transition-colors">Beranda</a>
                     <a href="#pengumuman" class="hover:text-pgri-red transition-colors">Pengumuman</a>
@@ -90,7 +89,6 @@
             </div>
         </div>
 
-        <!-- Mobile Navigation Dropdown -->
         <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white/98 backdrop-blur-md px-4 pt-3 pb-5 space-y-2 text-sm font-semibold text-slate-700 shadow-lg">
             <a href="#beranda" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-100 hover:text-pgri-red transition"><i class="fa-solid fa-house w-6 text-pgri-red"></i> Beranda</a>
             <a href="#pengumuman" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-slate-100 hover:text-pgri-red transition"><i class="fa-solid fa-bullhorn w-6 text-pgri-red"></i> Pengumuman</a>
@@ -102,10 +100,9 @@
         </div>
     </header>
 
-    <!-- Hero Header -->
     <section id="beranda" class="relative bg-slate-900 text-white py-20 lg:py-28 overflow-hidden border-b border-slate-800">
-        <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center opacity-50" style="background-image: url('bg-header.jpg');"></div>
-        <div class="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/70 via-slate-900/60 to-slate-900/90"></div>
+        <div id="hero-bg" class="absolute inset-0 z-0 bg-cover bg-center opacity-40"></div>
+        <div class="absolute inset-0 z-0 bg-gradient-to-b from-slate-900/80 via-slate-900/70 to-slate-900/95"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center max-w-4xl mx-auto">
@@ -133,7 +130,6 @@
         </div>
     </section>
 
-    <!-- Pengumuman Publik -->
     <section id="pengumuman" class="py-14 bg-amber-50/50 border-b border-amber-200/60">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between mb-8">
@@ -149,7 +145,6 @@
         </div>
     </section>
 
-    <!-- Sambutan Ketua -->
     <section id="sambutan" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-10 shadow-sm flex flex-col md:flex-row items-center gap-8">
@@ -160,15 +155,12 @@
                     <span class="text-xs font-bold text-pgri-red uppercase tracking-wider block mb-1">Kata Sambutan</span>
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-1" id="ketua-nama">WARTA, S.Pd.SD, M.Pd</h2>
                     <p class="text-xs text-pgri-red font-semibold mb-4" id="ketua-jabatan">Ketua PGRI Cabang Tukdana (Masa Bakti XXIII Tahun 2025 – 2030)</p>
-                    <blockquote class="text-slate-600 italic text-sm sm:text-base leading-relaxed mb-4" id="ketua-sambutan">
-                        "Selamat datang di Portal Resmi Sistem Informasi PGRI Cabang Tukdana (SIPGRI). Portal ini dikembangkan untuk mewujudkan transparansi, profesionalisme, serta pusat administrasi digital bagi seluruh pengurus cabang dan anggota di 12 ranting se-Kecamatan Tukdana."
-                    </blockquote>
+                    <blockquote class="text-slate-600 italic text-sm sm:text-base leading-relaxed mb-4" id="ketua-sambutan">"Memuat sambutan..."</blockquote>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Struktur Pengurus -->
     <section id="pengurus" class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-12">
@@ -177,13 +169,11 @@
                 <p class="text-slate-600 text-sm mt-2 font-medium">Masa Bakti XXIII Tahun 2025 – 2030</p>
             </div>
 
-            <!-- I. Pengurus Harian -->
             <div class="mb-12">
                 <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-slate-200 pb-2"><i class="fa-solid fa-user-tie text-pgri-red mr-2"></i> I. Pengurus Harian</h3>
                 <div id="pengurus-harian-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
             </div>
 
-            <!-- II. Seksi Bidang -->
             <div>
                 <h3 class="text-xl font-bold text-slate-800 mb-6 border-b border-slate-200 pb-2"><i class="fa-solid fa-sitemap text-amber-600 mr-2"></i> II. Seksi-Seksi Bidang</h3>
                 <div id="pengurus-seksi-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
@@ -191,7 +181,6 @@
         </div>
     </section>
 
-    <!-- Data Ranting -->
     <section id="ranting" class="py-16 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
@@ -200,7 +189,7 @@
                     <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Data Ranting & Ketua Ranting</h2>
                 </div>
                 <div class="mt-4 md:mt-0 text-sm font-semibold text-slate-600 bg-slate-100 px-4 py-2 rounded-xl">
-                    Total Wilayah: <span id="total-ranting" class="text-pgri-red font-bold text-base">12</span> Ranting
+                    Total Wilayah: <span id="total-ranting" class="text-pgri-red font-bold text-base">0</span> Ranting
                 </div>
             </div>
 
@@ -223,10 +212,9 @@
         </div>
     </section>
 
-    <!-- Agenda & Sekretariat -->
     <section id="agenda" class="py-16 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-8"><i class="fa-regular fa-calendar-check text-pgri-red mr-3"></i> Agenda & Kegiatan Organisasi</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mb-8"><i class="fa-regular fa-calendar-check text-pgri-red mr-3"></i> Agenda & Kegiatan</h2>
             <div id="agenda-list" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
         </div>
     </section>
@@ -239,7 +227,7 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="bg-slate-100 border rounded-2xl overflow-hidden shadow-sm min-h-[280px]">
+                <div class="bg-slate-100 border rounded-2xl overflow-hidden shadow-sm min-h-[260px]">
                     <img id="kantor-foto" src="kantor.jpg" onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e293b/ffffff?text=Gedung+Sekretariat+PGRI';" class="w-full h-full object-cover">
                 </div>
 
@@ -247,17 +235,16 @@
                     <div>
                         <h3 class="font-bold text-slate-900 text-lg mb-3"><i class="fa-solid fa-building text-pgri-red mr-2"></i> Informasi Kontak</h3>
                         <div class="space-y-3 text-sm text-slate-600">
-                            <p><i class="fa-solid fa-location-dot text-pgri-red mr-2"></i> <span id="alamat-kantor">Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat</span></p>
+                            <p><i class="fa-solid fa-location-dot text-pgri-red mr-2"></i> <span id="alamat-kantor">Jl. Raya Tukdana, Indramayu</span></p>
                             <p><i class="fa-solid fa-phone text-pgri-red mr-2"></i> <span id="telepon-kantor">0812-3456-7890</span></p>
-                            <p><i class="fa-solid fa-envelope text-pgri-red mr-2"></i> <span id="email-kantor">admin@pgricabangtukdana.org</span></p>
-                            <p><i class="fa-solid fa-clock text-pgri-red mr-2"></i> Senin - Sabtu (08.00 - 15.00 WIB)</p>
+                            <p><i class="fa-solid fa-envelope text-pgri-red mr-2"></i> <span id="email-kantor">admin@pgri.org</span></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="rounded-2xl overflow-hidden border shadow-sm min-h-[280px]">
-                    <iframe class="w-full h-full border-0 min-h-[280px]" 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.887834162817!2d108.28111835673047!3d-6.5527231360270095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMzMnMDkuOCJTIDEwOMKwMTYnNTIuMCJF!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" allowfullscreen="" loading="lazy"></iframe>
+                <div class="rounded-2xl overflow-hidden border shadow-sm min-h-[260px]">
+                    <iframe class="w-full h-full border-0 min-h-[260px]" 
+                        src="https://maps.google.com/maps?q=-6.5527231360270095,108.28111835673047&hl=id&z=17&output=embed"></iframe>
                 </div>
             </div>
         </div>
@@ -278,20 +265,20 @@
             <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Username / NPA Anggota</label>
-                    <input type="text" id="login-username" required placeholder="Contoh: 3212004 atau admin" class="w-full p-2.5 rounded-xl border text-sm focus:ring-2 focus:ring-pgri-red focus:outline-none">
+                    <input type="text" id="login-username" required placeholder="Contoh: 3212004 atau admin" class="w-full p-2.5 rounded-xl border text-sm">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Password</label>
-                    <input type="password" id="login-password" required placeholder="Awal: Tgl Lahir (DDMMYYYY)" class="w-full p-2.5 rounded-xl border text-sm focus:ring-2 focus:ring-pgri-red focus:outline-none">
+                    <input type="password" id="login-password" required placeholder="Awal: Tgl Lahir (DDMMYYYY)" class="w-full p-2.5 rounded-xl border text-sm">
                 </div>
-                <button type="submit" id="btn-login-submit" class="w-full py-3 bg-pgri-red text-white font-bold text-sm rounded-xl hover:bg-pgri-redhover transition shadow-md">
+                <button type="submit" id="btn-login-submit" class="w-full py-3 bg-pgri-red text-white font-bold text-sm rounded-xl hover:bg-pgri-redhover transition">
                     <i class="fa-solid fa-right-to-bracket mr-2"></i> Masuk Ke Portal
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 2: DASHBOARD PORTAL WITH BATCH PAYMENT FEATURE -->
+    <!-- MODAL 2: DASHBOARD PORTAL -->
     <div id="portalModal" class="fixed inset-0 bg-slate-900/70 backdrop-blur-md z-50 flex items-center justify-center hidden p-3 sm:p-6 overflow-y-auto">
         <div class="bg-slate-50 rounded-2xl max-w-5xl w-full my-auto shadow-2xl relative border overflow-hidden flex flex-col max-h-[92vh]">
             
@@ -326,12 +313,6 @@
                     </div>
                 </div>
 
-                <!-- Dues Breakdown Banner -->
-                <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 text-xs text-slate-700 space-y-1">
-                    <span class="font-bold text-amber-900 block"><i class="fa-solid fa-circle-info text-pgri-red mr-1"></i> Ketentuan Standar Iuran Anggota: Rp 25.000 / Bulan</span>
-                    <p class="text-slate-600">Alokasi per Anggota: Iuran Wajib (Rp 4.800), Urpeg (Rp 3.000), DKP Cabang (Rp 5.000), DKP PD II (Rp 7.200), Konfer Pusat/Daerah (Rp 5.000).</p>
-                </div>
-
                 <!-- Tabs Navigation -->
                 <div class="bg-white border rounded-2xl overflow-hidden shadow-sm">
                     <div class="border-b bg-slate-100/80 px-4 py-3 flex space-x-2 overflow-x-auto text-xs font-bold">
@@ -339,10 +320,13 @@
                             <i class="fa-solid fa-list-check mr-1.5"></i> Riwayat Iuran
                         </button>
                         <button onclick="switchPortalTab('tab-input-batch')" id="btn-tab-input-batch" class="hidden px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">
-                            <i class="fa-solid fa-square-check mr-1.5"></i> Input Setoran Ceklis Ranting
+                            <i class="fa-solid fa-square-check mr-1.5"></i> Input Setoran Ranting
                         </button>
-                        <button onclick="switchPortalTab('tab-pengeluaran')" id="btn-tab-pengeluaran" class="hidden px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">
-                            <i class="fa-solid fa-money-bill-transfer mr-1.5 text-rose-600"></i> Input Pengeluaran Kas
+                        <button onclick="switchPortalTab('tab-cek-belum-bayar')" id="btn-tab-cek-belum-bayar" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">
+                            <i class="fa-solid fa-user-xmark mr-1.5"></i> Cek Belum Bayar
+                        </button>
+                        <button onclick="switchPortalTab('tab-input-pengeluaran')" id="btn-tab-input-pengeluaran" class="hidden px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">
+                            <i class="fa-solid fa-file-invoice-dollar mr-1.5 text-rose-600"></i> Input Pengeluaran
                         </button>
                         <button onclick="switchPortalTab('tab-password')" id="btn-tab-password" class="px-4 py-2 rounded-xl text-slate-600 hover:text-slate-900">
                             <i class="fa-solid fa-key mr-1.5"></i> Ubah Password
@@ -351,8 +335,16 @@
 
                     <div class="p-5">
                         <!-- TAB 1: RIWAYAT -->
-                        <div id="tab-iuran" class="portal-tab-content">
-                            <div class="overflow-x-auto">
+                        <div id="tab-iuran" class="portal-tab-content space-y-4">
+                            <div class="flex justify-end space-x-2">
+                                <button onclick="exportTableToExcel('table-iuran-body', 'Riwayat_Iuran_SIPGRI')" class="px-3 py-1.5 bg-emerald-700 text-white font-semibold rounded-lg text-xs hover:bg-emerald-800">
+                                    <i class="fa-solid fa-file-excel mr-1"></i> Export Excel
+                                </button>
+                                <button onclick="printReport('tab-iuran', 'Laporan Riwayat Iuran')" class="px-3 py-1.5 bg-slate-800 text-white font-semibold rounded-lg text-xs hover:bg-slate-900">
+                                    <i class="fa-solid fa-print mr-1"></i> Cetak PDF / Print
+                                </button>
+                            </div>
+                            <div class="overflow-x-auto border rounded-xl">
                                 <table class="w-full text-left text-xs">
                                     <thead class="bg-slate-100 text-slate-700 uppercase font-semibold">
                                         <tr>
@@ -369,26 +361,20 @@
                             </div>
                         </div>
 
-                        <!-- TAB 2: INPUT SETORAN BATCH PER RANTING -->
+                        <!-- TAB 2: INPUT SETORAN BATCH (RESTRICTED: BENDAHARA & ADMIN ONLY) -->
                         <div id="tab-input-batch" class="portal-tab-content hidden space-y-4">
                             <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl text-xs text-amber-900">
-                                <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> Mode Ceklis Praktis:</span> Pilih <b>Ranting</b> dan <b>Bulan</b>, lalu beri tanda ceklis pada nama-nama guru/anggota yang sudah membayar iuran standar <b>Rp 25.000</b>.
+                                <span class="font-bold"><i class="fa-solid fa-lightbulb mr-1"></i> Mode Ceklis Setoran Ranting:</span> Pilih <b>Ranting</b> dan <b>Bulan</b>, lalu beri tanda ceklis pada guru/anggota yang sudah membayar setoran <b>Rp 25.000</b>.
                             </div>
 
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                 <div>
                                     <label class="block font-bold text-slate-700 text-xs mb-1">Pilih Ranting Sekolah</label>
                                     <select id="batch-select-ranting" class="w-full p-2.5 rounded-xl border text-xs font-semibold">
-                                        <option value="Ranting TK">Ranting TK</option>
                                         <option value="Ranting Lajer">Ranting Lajer</option>
                                         <option value="Ranting Sukadana">Ranting Sukadana</option>
                                         <option value="Ranting Sukaperna">Ranting Sukaperna</option>
-                                        <option value="Ranting Karker">Ranting Karker</option>
-                                        <option value="Ranting Sukamulya">Ranting Sukamulya</option>
-                                        <option value="Ranting Tukdana & Mekarsari">Ranting Tukdana & Mekarsari</option>
-                                        <option value="Ranting Rancajawat">Ranting Rancajawat</option>
-                                        <option value="Ranting Boga">Ranting Boga</option>
-                                        <option value="Ranting Cangko & Pagedangan">Ranting Cangko & Pagedangan</option>
+                                        <option value="Ranting TK">Ranting TK</option>
                                         <option value="Ranting SMP">Ranting SMP</option>
                                         <option value="Ranting SMA">Ranting SMA</option>
                                     </select>
@@ -398,8 +384,8 @@
                                     <input type="text" id="batch-select-bulan" value="Agustus 2026" class="w-full p-2.5 rounded-xl border text-xs font-semibold">
                                 </div>
                                 <div class="flex items-end">
-                                    <button onclick="loadAnggotaRantingTable()" class="w-full py-2.5 bg-slate-900 text-white font-bold rounded-xl text-xs hover:bg-slate-800 transition">
-                                        <i class="fa-solid fa-users mr-1"></i> Tampilkan Daftar Anggota
+                                    <button onclick="loadAnggotaRantingTable()" class="w-full py-2.5 bg-slate-900 text-white font-bold rounded-xl text-xs hover:bg-slate-800">
+                                        <i class="fa-solid fa-users mr-1"></i> Tampilkan Anggota
                                     </button>
                                 </div>
                             </div>
@@ -410,7 +396,7 @@
                                 <div class="flex items-center justify-between text-xs pt-2">
                                     <span class="font-bold text-slate-700">Daftar Anggota Ranting:</span>
                                     <button onclick="toggleSelectAllAnggota()" class="text-pgri-red font-bold hover:underline">
-                                        <i class="fa-regular fa-square-check mr-1"></i> Pilih / Ceklis Semua
+                                        <i class="fa-regular fa-square-check mr-1"></i> Pilih Semua
                                     </button>
                                 </div>
 
@@ -421,8 +407,8 @@
                                                 <th class="p-3 text-center w-12">Setor</th>
                                                 <th class="p-3">NPA</th>
                                                 <th class="p-3">Nama Anggota</th>
-                                                <th class="p-3">Unit Kerja / Sekolah</th>
-                                                <th class="p-3 text-right">Nominal Setor</th>
+                                                <th class="p-3">Unit Kerja</th>
+                                                <th class="p-3 text-right">Nominal</th>
                                             </tr>
                                         </thead>
                                         <tbody id="batch-table-body" class="divide-y bg-white"></tbody>
@@ -435,13 +421,96 @@
                                         (<span id="batch-total-rupiah" class="font-bold text-emerald-700">Rp 0</span>)
                                     </div>
                                     <button onclick="handleBatchIuranSubmit()" class="px-6 py-2.5 bg-emerald-600 text-white font-bold text-xs rounded-xl hover:bg-emerald-700 transition shadow">
-                                        <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> Simpan Setoran Terpilih (Rp 25.000/Anggota)
+                                        <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> Simpan Setoran Terpilih
                                     </button>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- TAB 3: UBAH PASSWORD -->
+                        <!-- TAB 3: CEK BELUM BAYAR (MONITORING UNPAID MEMBERS) -->
+                        <div id="tab-cek-belum-bayar" class="portal-tab-content hidden space-y-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <div>
+                                    <label class="block font-bold text-slate-700 text-xs mb-1">Filter Ranting</label>
+                                    <select id="unpaid-select-ranting" class="w-full p-2.5 rounded-xl border text-xs font-semibold">
+                                        <option value="Ranting Lajer">Ranting Lajer</option>
+                                        <option value="Ranting Sukadana">Ranting Sukadana</option>
+                                        <option value="Ranting Sukaperna">Ranting Sukaperna</option>
+                                        <option value="Ranting TK">Ranting TK</option>
+                                        <option value="Ranting SMP">Ranting SMP</option>
+                                        <option value="Ranting SMA">Ranting SMA</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 text-xs mb-1">Bulan & Tahun</label>
+                                    <input type="text" id="unpaid-select-bulan" value="Agustus 2026" class="w-full p-2.5 rounded-xl border text-xs font-semibold">
+                                </div>
+                                <div class="flex items-end">
+                                    <button onclick="fetchUnpaidMembers()" class="w-full py-2.5 bg-pgri-red text-white font-bold rounded-xl text-xs hover:bg-pgri-redhover">
+                                        <i class="fa-solid fa-magnifying-glass mr-1"></i> Cek Status Pembayaran
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-end space-x-2">
+                                <button onclick="exportTableToExcel('table-unpaid-body', 'Daftar_Belum_Bayar')" class="px-3 py-1.5 bg-emerald-700 text-white font-semibold rounded-lg text-xs hover:bg-emerald-800">
+                                    <i class="fa-solid fa-file-excel mr-1"></i> Export Excel
+                                </button>
+                                <button onclick="printReport('tab-cek-belum-bayar', 'Laporan Anggota Belum Bayar')" class="px-3 py-1.5 bg-slate-800 text-white font-semibold rounded-lg text-xs hover:bg-slate-900">
+                                    <i class="fa-solid fa-print mr-1"></i> Cetak PDF / Print
+                                </button>
+                            </div>
+
+                            <div class="overflow-x-auto border rounded-xl">
+                                <table class="w-full text-left text-xs">
+                                    <thead class="bg-slate-100 text-slate-700 uppercase font-semibold">
+                                        <tr>
+                                            <th class="p-3">NPA</th>
+                                            <th class="p-3">Nama Anggota</th>
+                                            <th class="p-3">Unit Kerja</th>
+                                            <th class="p-3">Ranting</th>
+                                            <th class="p-3 text-center">Status Pembayaran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="table-unpaid-body" class="divide-y bg-white"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- TAB 4: INPUT PENGELUARAN (BENDAHARA & ADMIN ONLY) -->
+                        <div id="tab-input-pengeluaran" class="portal-tab-content hidden max-w-lg space-y-4">
+                            <h4 class="font-bold text-slate-800 text-sm">Pencatatan Pengeluaran Kas Organisasi</h4>
+                            <div id="alert-pengeluaran" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+                            
+                            <form onsubmit="handlePengeluaranSubmit(event)" class="space-y-3 text-xs">
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1">Kategori Pengeluaran</label>
+                                    <select id="out-kategori" class="w-full p-2.5 rounded-xl border font-semibold">
+                                        <option value="Operasional">Operasional Kantor</option>
+                                        <option value="Kegiatan">Kegiatan & Acara</option>
+                                        <option value="Kesejahteraan / DKP">Kesejahteraan / DKP</option>
+                                        <option value="Lain-lain">Lain-lain</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1">Deskripsi Keperluan</label>
+                                    <input type="text" id="out-keperluan" required placeholder="Contoh: Konsumsi Rapat Pengurus Cabang" class="w-full p-2.5 rounded-xl border">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1">Penerima / Vendor</label>
+                                    <input type="text" id="out-penerima" required placeholder="Contoh: Toko Berkah / Ibu Ani" class="w-full p-2.5 rounded-xl border">
+                                </div>
+                                <div>
+                                    <label class="block font-bold text-slate-700 mb-1">Nominal Pengeluaran (Rp)</label>
+                                    <input type="number" id="out-nominal" required placeholder="Contoh: 150000" class="w-full p-2.5 rounded-xl border">
+                                </div>
+                                <button type="submit" id="btn-out-submit" class="w-full py-3 bg-rose-600 hover:bg-rose-700 text-white font-bold rounded-xl transition">
+                                    <i class="fa-solid fa-cloud-arrow-up mr-2"></i> Simpan Pengeluaran Kas
+                                </button>
+                            </form>
+                        </div>
+
+                        <!-- TAB 5: UBAH PASSWORD -->
                         <div id="tab-password" class="portal-tab-content hidden max-w-sm space-y-4">
                             <h4 class="font-bold text-slate-800 text-sm">Ubah Password Akun SIPGRI</h4>
                             <div id="alert-change-pass" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
@@ -457,38 +526,6 @@
                                 <button type="submit" class="w-full py-2.5 bg-slate-800 text-white font-bold rounded-xl hover:bg-slate-700">Simpan Password Baru</button>
                             </form>
                         </div>
-
-                        <!-- TAB 4: INPUT PENGELUARAN KAS (KHUSUS BENDAHARA & ADMIN) -->
-                        <div id="tab-pengeluaran" class="portal-tab-content hidden max-w-lg space-y-4">
-                            <h4 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-receipt text-rose-600 mr-2"></i> Pencatatan Pengeluaran Kas Organisasi</h4>
-                            <div id="alert-pengeluaran-result" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
-                            <form onsubmit="handlePengeluaranSubmit(event)" class="space-y-3 text-xs">
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Kategori Pengeluaran</label>
-                                    <select id="out-kategori" class="w-full p-2.5 rounded-xl border text-xs font-semibold">
-                                        <option value="Operasional">Operasional & Kesekretariatan</option>
-                                        <option value="Kegiatan Organisasi">Kegiatan Organisasi / Acara</option>
-                                        <option value="Bantuan Kesejahteraan">Bantuan Kesejahteraan / DKP</option>
-                                        <option value="Lainnya">Lain-lain</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Keperluan / Rincian Pengeluaran</label>
-                                    <input type="text" id="out-keperluan" required placeholder="Contoh: Konsumsi Rapat Ranting & ATK" class="w-full p-2.5 rounded-xl border">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Penerima / Toko / Vendor</label>
-                                    <input type="text" id="out-penerima" placeholder="Contoh: Toko Berkah / Pak Asep" class="w-full p-2.5 rounded-xl border">
-                                </div>
-                                <div>
-                                    <label class="block font-bold text-slate-700 mb-1">Nominal Pengeluaran (Rp)</label>
-                                    <input type="number" id="out-nominal" required placeholder="Contoh: 150000" class="w-full p-2.5 rounded-xl border font-bold text-rose-600">
-                                </div>
-                                <button type="submit" id="btn-out-submit" class="w-full py-2.5 bg-rose-600 text-white font-bold rounded-xl hover:bg-rose-700 transition shadow">
-                                    <i class="fa-solid fa-cloud-arrow-up mr-1.5"></i> Simpan Catatan Pengeluaran Kas
-                                </button>
-                            </form>
-                        </div>
                     </div>
                 </div>
 
@@ -496,24 +533,32 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-2">
-            <p>© 2026 SIPGRI PGRI Cabang Tukdana. Hak Cipta Dilindungi Undang-Undang.</p>
-            <p class="text-slate-500">Dikembangkan untuk Pengelolaan Organisasi Modern, Transparan, & Terdigitalisasi.</p>
-        </div>
-    </footer>
+    <!-- Hidden Print Container -->
+    <div id="print-area" class="hidden p-8 font-sans"></div>
 
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbxR-_jdsPrbNTPFy2qv3dg0r4rZ0hM2WtoqmvCCfu6eMXQHHq56yVkcUMTD0NuZO_kV/exec";
         let currentSession = null;
         let loadedMembersBatch = [];
+        let dataPublic = null;
 
-        // Complete Public Data Object
-        let dataPublic = {
-            "profil_cabang": { 
+        // Embedded default data for blob iframe preview & offline environments
+        const DEFAULT_PUBLIC_DATA = {
+            "profil_cabang": {
+                "nama_cabang": "PGRI Cabang Tukdana",
                 "visi": "Mewujudkan pengelolaan organisasi PGRI Cabang Tukdana yang modern, transparan, profesional, dan terdigitalisasi",
-                "sambutan": "Selamat datang di Portal Resmi Sistem Informasi PGRI Cabang Tukdana (SIPGRI). Portal ini dikembangkan untuk mewujudkan transparansi, profesionalisme, serta pusat administrasi digital bagi seluruh pengurus cabang dan anggota di 12 ranting se-Kecamatan Tukdana."
+                "sambutan_ketua": {
+                    "nama": "WARTA, S.Pd.SD, M.Pd",
+                    "jabatan": "Ketua PGRI Cabang Tukdana (Masa Bakti XXIII 2025 – 2030)",
+                    "foto": "warta.jpg",
+                    "teks": "Selamat datang di Portal Resmi Sistem Informasi PGRI Cabang Tukdana (SIPGRI). Portal ini dikembangkan untuk mewujudkan transparansi, profesionalisme, serta pusat administrasi digital bagi seluruh pengurus cabang dan anggota di 12 ranting se-Kecamatan Tukdana."
+                },
+                "kontak": {
+                    "alamat": "Jl. Raya Tukdana, Kecamatan Tukdana, Kabupaten Indramayu, Jawa Barat",
+                    "telepon": "0812-3456-7890",
+                    "email": "admin@pgricabangtukdana.org",
+                    "foto_kantor": "kantor.jpg"
+                }
             },
             "pengurus_harian": [
                 { "jabatan": "KETUA", "nama": "WARTA, S.Pd.SD, M.Pd", "foto": "warta.jpg" },
@@ -531,14 +576,14 @@
                 { "bidang": "BANTUAN HUKUM DAN PERLINDUNGAN PROFESI", "nama": "MULYADI, S.Pd.", "foto": "mulyadi.jpg" },
                 { "bidang": "PENELITIAN DAN PENGABDIAN MASYARAKAT", "nama": "AMAN, S.Pd.I", "foto": "aman.jpg" },
                 { "bidang": "PEMBINAAN DAN PENGEMBANGAN LEMBAGA PENDIDIKAN", "nama": "EDI JUHAEDI SUDRAJAT, S.Pd.SD", "foto": "edi.jpg" },
-                { "bidang": "KERJA SAMA DAN PENGEMBANGAN USAHA", "nama": "TARMA, S.Pd.", "foto": "tarma.jpg" },
+                { "bidang": "KERJA SAMA DAN PENEGMBANGAN USAHA", "nama": "TARMA, S.Pd.", "foto": "tarma.jpg" },
                 { "bidang": "KESEJAHTERAAN DAN KETENAGAKERJAAN", "nama": "HJ. SITI NURKHASANAH, S.Pd.", "foto": "siti-n.jpg" },
                 { "bidang": "PEMBERDAYAAN PEREMPUAN", "nama": "SITI MUAROFAH, S.Pd.SD", "foto": "siti-m.jpg" },
                 { "bidang": "KEANGGOTAAN DAN DIGITALISASI ORGANISASI", "nama": "IHYA ULUMUDIN, S.Pd.", "foto": "ihya.jpg" },
                 { "bidang": "OLAHRAGA, SENI DAN BUDAYA", "nama": "ELLIS SUSILAWATI, S.Pd.", "foto": "ellis.jpg" },
                 { "bidang": "PEMBINAAN MENTAL DAN KARAKTER BANGSA", "nama": "SANTO, S.Pd.SD", "foto": "santo.jpg" },
                 { "bidang": "PEMBINAAN KEROHANIAN DAN KARAKTER BANGSA", "nama": "RAKIDI, S.Pd.I", "foto": "rakidi.jpg" },
-                { "bidang": "HUBUNGAN LEMBAGA/INSTANSI DAN ORGANISASI LAIN", "nama": "NURVITA DEWI.S, M.Pd", "foto": "nurvita.jpg" },
+                { "bidang": "HUBUNGAN LEMBAGA/INSTANSI", "nama": "NURVITA DEWI.S, M.Pd", "foto": "nurvita.jpg" },
                 { "bidang": "PEMBINAAN PAUDNI DAN NON FORMAL", "nama": "EMAH, S.Pd.", "foto": "emah.jpg" }
             ],
             "ranting": [
@@ -556,128 +601,154 @@
                 { "no": 12, "nama": "Ranting SMA", "ketua": "Ketua Ranting SMA", "unit": "SMA / SMK", "anggota": 42 }
             ],
             "agenda": [
-                {
-                    "tanggal": "15 Ags 2026",
-                    "judul": "Sosialisasi & Pelatihan Portal SIPGRI Cabang Tukdana",
-                    "lokasi": "Gedung PGRI Cabang Tukdana",
-                    "deskripsi": "Pelatihan penggunaan portal administrasi digital untuk seluruh pengurus ranting dan pengurus harian cabang."
-                },
-                {
-                    "tanggal": "25 Nov 2026",
-                    "judul": "Peringatan Hari Guru Nasional & HUT PGRI Ke-81",
-                    "lokasi": "Kecamatan Tukdana",
-                    "deskripsi": "Upacara peringatan HGN dan panggung seni budaya pendidik se-Kecamatan Tukdana."
-                }
+                { "id": 1, "tanggal": "15 Ags 2026", "judul": "Sosialisasi & Pelatihan Portal SIPGRI Cabang Tukdana", "lokasi": "Gedung PGRI Cabang Tukdana", "deskripsi": "Pelatihan penggunaan portal administrasi digital untuk seluruh pengurus ranting dan pengurus harian cabang." },
+                { "id": 2, "tanggal": "25 Nov 2026", "judul": "Peringatan Hari Guru Nasional & HUT PGRI Ke-81", "lokasi": "Kecamatan Tukdana", "deskripsi": "Upacara peringatan HGN dan panggung seni budaya pendidik se-Kecamatan Tukdana." }
             ],
             "pengumuman": [
-                {
-                    "tanggal": "01 Ags 2026",
-                    "judul": "Peluncuran Sistem Informasi SIPGRI Cabang Tukdana",
-                    "ringkasan": "Sistem Informasi Manajemen dan Iuran Anggota PGRI Cabang Tukdana berbasis digital resmi diaktifkan. Pengurus Ranting dapat berkoordinasi dengan Sekretaris & Bendahara Cabang."
-                },
-                {
-                    "tanggal": "28 Jul 2026",
-                    "judul": "Pembaruan Data Anggota Masa Bakti XXIII (2025 - 2030)",
-                    "ringkasan": "Diharapkan seluruh Ketua Ranting melakukan validasi data keanggotaan unit kerja masing-masing melalui Portal Administrasi."
-                }
+                { "tanggal": "01 Ags 2026", "judul": "Peluncuran Sistem Informasi SIPGRI Cabang Tukdana", "ringkasan": "Sistem Informasi Manajemen dan Iuran Anggota PGRI Cabang Tukdana berbasis digital resmi diaktifkan." },
+                { "tanggal": "28 Jul 2026", "judul": "Pembaruan Data Anggota Masa Bakti XXIII (2025 - 2030)", "ringkasan": "Diharapkan seluruh Ketua Ranting melakukan validasi data keanggotaan unit kerja masing-masing." }
             ]
         };
 
         document.addEventListener('DOMContentLoaded', () => {
+            fetchPublicData();
             const stored = localStorage.getItem('sipgri_session');
             if (stored) {
                 currentSession = JSON.parse(stored);
                 updateLoginButtonUI();
             }
-            renderAllPublicSections();
         });
 
-        function renderAllPublicSections() {
-            renderPengumuman();
-            renderPengurus();
-            renderRanting();
-            renderAgenda();
+        async function fetchPublicData() {
+            try {
+                // Check if running on standard HTTP/HTTPS protocol (not blob/data URIs)
+                if (window.location.protocol.startsWith('http') && !window.location.href.startsWith('blob:')) {
+                    const res = await fetch('data-public.json');
+                    if (res.ok) {
+                        dataPublic = await res.json();
+                        renderPublicData();
+                        return;
+                    }
+                }
+            } catch (err) {
+                console.warn("Data public fetch bypassed or failed, loading default fallback dataset:", err);
+            }
+            
+            // Fallback for preview/iframe environments
+            dataPublic = DEFAULT_PUBLIC_DATA;
+            renderPublicData();
         }
 
-        function renderPengumuman() {
-            const container = document.getElementById('pengumuman-list');
-            container.innerHTML = '';
-            dataPublic.pengumuman.forEach(p => {
-                container.innerHTML += `
-                    <div class="bg-white p-5 rounded-2xl border border-amber-200 shadow-sm flex flex-col justify-between">
-                        <div>
-                            <span class="text-[11px] font-bold text-pgri-red uppercase tracking-wider block mb-1">${p.tanggal}</span>
-                            <h3 class="font-bold text-slate-900 text-base mb-2">${p.judul}</h3>
-                            <p class="text-slate-600 text-xs leading-relaxed">${p.ringkasan}</p>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+        function renderPublicData() {
+            if (!dataPublic) return;
 
-        function renderPengurus() {
-            const gridHarian = document.getElementById('pengurus-harian-grid');
-            gridHarian.innerHTML = '';
-            dataPublic.pengurus_harian.forEach(p => {
-                gridHarian.innerHTML += `
-                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm text-center flex flex-col items-center">
-                        <div class="w-28 h-32 sm:w-32 sm:h-36 rounded-2xl overflow-hidden border-2 border-pgri-red shadow-sm mb-3 bg-slate-100">
-                            <img src="${p.foto}" onerror="this.onerror=null; this.src='https://placehold.co/200x240/990000/ffffff?text=${encodeURIComponent(p.nama.split(' ')[0])}';" class="w-full h-full object-cover">
-                        </div>
-                        <span class="text-[10px] font-extrabold text-pgri-red uppercase tracking-wider block mb-1 bg-red-50 px-2.5 py-0.5 rounded-full">${p.jabatan}</span>
-                        <h4 class="font-bold text-slate-900 text-sm leading-snug">${p.nama}</h4>
-                    </div>
-                `;
-            });
+            // Visi
+            if (dataPublic.profil_cabang && dataPublic.profil_cabang.visi) {
+                document.getElementById('hero-visi').innerText = `"${dataPublic.profil_cabang.visi}"`;
+            }
 
-            const gridSeksi = document.getElementById('pengurus-seksi-grid');
-            gridSeksi.innerHTML = '';
-            dataPublic.pengurus_seksi.forEach(s => {
-                gridSeksi.innerHTML += `
-                    <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm flex items-center space-x-3.5">
-                        <div class="w-14 h-16 rounded-xl overflow-hidden border border-slate-200 shadow-sm bg-slate-100 flex-shrink-0">
-                            <img src="${s.foto}" onerror="this.onerror=null; this.src='https://placehold.co/150x180/990000/ffffff?text=${encodeURIComponent(s.nama.split(' ')[0])}';" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-tight block mb-0.5">${s.bidang}</span>
-                            <h4 class="font-bold text-slate-900 text-xs leading-snug">${s.nama}</h4>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+            // Sambutan Ketua
+            if (dataPublic.profil_cabang && dataPublic.profil_cabang.sambutan_ketua) {
+                const s = dataPublic.profil_cabang.sambutan_ketua;
+                document.getElementById('ketua-nama').innerText = s.nama;
+                document.getElementById('ketua-jabatan').innerText = s.jabatan;
+                document.getElementById('ketua-sambutan').innerText = `"${s.teks}"`;
+                if (s.foto) document.getElementById('ketua-foto').src = s.foto;
+            }
 
-        function renderRanting() {
-            const tbody = document.getElementById('ranting-table-body');
-            tbody.innerHTML = '';
-            dataPublic.ranting.forEach(r => {
-                tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition">
-                        <td class="py-3 px-6 text-center font-bold">${r.no}</td>
-                        <td class="py-3 px-6 font-bold text-slate-900">${r.nama}</td>
-                        <td class="py-3 px-6">${r.ketua}</td>
-                        <td class="py-3 px-6">${r.unit}</td>
-                        <td class="py-3 px-6 text-center font-bold text-pgri-red">${r.anggota} Anggota</td>
-                    </tr>
-                `;
-            });
-        }
+            // Kontak
+            if (dataPublic.profil_cabang && dataPublic.profil_cabang.kontak) {
+                const k = dataPublic.profil_cabang.kontak;
+                document.getElementById('alamat-kantor').innerText = k.alamat;
+                document.getElementById('telepon-kantor').innerText = k.telepon;
+                document.getElementById('email-kantor').innerText = k.email;
+                if (k.foto_kantor) document.getElementById('kantor-foto').src = k.foto_kantor;
+            }
 
-        function renderAgenda() {
-            const container = document.getElementById('agenda-list');
-            container.innerHTML = '';
-            dataPublic.agenda.forEach(a => {
-                container.innerHTML += `
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-                        <div class="flex items-center justify-between">
-                            <span class="bg-pgri-red/10 text-pgri-red text-xs font-bold px-3 py-1 rounded-full"><i class="fa-regular fa-calendar mr-1"></i> ${a.tanggal}</span>
-                            <span class="text-xs text-slate-500"><i class="fa-solid fa-location-dot mr-1"></i> ${a.lokasi}</span>
+            // Pengurus Harian Grid (3:4 aspect ratio portrait cards)
+            const harianContainer = document.getElementById('pengurus-harian-grid');
+            if (harianContainer && dataPublic.pengurus_harian) {
+                harianContainer.innerHTML = '';
+                dataPublic.pengurus_harian.forEach(p => {
+                    harianContainer.innerHTML += `
+                        <div class="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm flex flex-col items-center p-4 text-center">
+                            <div class="w-32 h-40 rounded-xl overflow-hidden mb-3 border bg-slate-100">
+                                <img src="${p.foto}" onerror="this.onerror=null; this.src='https://placehold.co/300x400/1e293b/ffffff?text=${encodeURIComponent(p.nama)}';" class="w-full h-full object-cover">
+                            </div>
+                            <span class="text-[10px] font-bold text-pgri-red uppercase tracking-wider mb-1">${p.jabatan}</span>
+                            <h4 class="font-bold text-slate-900 text-sm leading-snug">${p.nama}</h4>
                         </div>
-                        <h3 class="font-bold text-slate-900 text-lg">${a.judul}</h3>
-                        <p class="text-slate-600 text-xs leading-relaxed">${a.deskripsi}</p>
-                    </div>
-                `;
-            });
+                    `;
+                });
+            }
+
+            // Seksi Bidang Grid
+            const seksiContainer = document.getElementById('pengurus-seksi-grid');
+            if (seksiContainer && dataPublic.pengurus_seksi) {
+                seksiContainer.innerHTML = '';
+                dataPublic.pengurus_seksi.forEach(s => {
+                    seksiContainer.innerHTML += `
+                        <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm flex items-center space-x-4">
+                            <div class="w-16 h-20 flex-shrink-0 rounded-xl overflow-hidden border bg-slate-100">
+                                <img src="${s.foto}" onerror="this.onerror=null; this.src='https://placehold.co/150x200/990000/ffffff?text=PGRI';" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <span class="text-[10px] font-bold text-amber-600 block leading-tight mb-1 uppercase">${s.bidang}</span>
+                                <h4 class="font-bold text-slate-900 text-xs">${s.nama}</h4>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            // Ranting Table
+            const rantingBody = document.getElementById('ranting-table-body');
+            if (rantingBody && dataPublic.ranting) {
+                rantingBody.innerHTML = '';
+                document.getElementById('total-ranting').innerText = dataPublic.ranting.length;
+                dataPublic.ranting.forEach(r => {
+                    rantingBody.innerHTML += `
+                        <tr class="hover:bg-slate-50">
+                            <td class="py-3 px-6 text-center font-bold">${r.no}</td>
+                            <td class="py-3 px-6 font-bold text-slate-900">${r.nama}</td>
+                            <td class="py-3 px-6">${r.ketua}</td>
+                            <td class="py-3 px-6"><span class="px-2.5 py-1 bg-slate-100 rounded-lg text-xs font-medium">${r.unit}</span></td>
+                            <td class="py-3 px-6 text-center font-bold text-pgri-red">${r.anggota} Anggota</td>
+                        </tr>
+                    `;
+                });
+            }
+
+            // Agenda List
+            const agendaList = document.getElementById('agenda-list');
+            if (agendaList && dataPublic.agenda) {
+                agendaList.innerHTML = '';
+                dataPublic.agenda.forEach(a => {
+                    agendaList.innerHTML += `
+                        <div class="bg-white border p-6 rounded-2xl shadow-sm space-y-3">
+                            <span class="px-3 py-1 bg-pgri-red/10 text-pgri-red text-xs font-bold rounded-full">${a.tanggal}</span>
+                            <h3 class="font-bold text-slate-900 text-lg">${a.judul}</h3>
+                            <p class="text-xs text-slate-500"><i class="fa-solid fa-location-dot mr-1"></i> ${a.lokasi}</p>
+                            <p class="text-sm text-slate-600">${a.deskripsi}</p>
+                        </div>
+                    `;
+                });
+            }
+
+            // Pengumuman List
+            const pengumumanList = document.getElementById('pengumuman-list');
+            if (pengumumanList && dataPublic.pengumuman) {
+                pengumumanList.innerHTML = '';
+                dataPublic.pengumuman.forEach(p => {
+                    pengumumanList.innerHTML += `
+                        <div class="bg-white p-5 rounded-2xl border shadow-sm">
+                            <span class="text-xs font-semibold text-slate-400 block mb-1">${p.tanggal}</span>
+                            <h4 class="font-bold text-slate-900 text-base mb-2">${p.judul}</h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">${p.ringkasan}</p>
+                        </div>
+                    `;
+                });
+            }
         }
 
         async function handleLoginSubmit(e) {
@@ -726,12 +797,17 @@
             document.getElementById('portal-user-role').innerText = u.role;
             document.getElementById('portal-user-ranting').innerText = u.ranting;
 
-            if (['ADMIN', 'BENDAHARA', 'KETUA_RANTING'].includes(u.role)) {
-                document.getElementById('btn-tab-input-batch').classList.remove('hidden');
-            }
+            // ROLE-BASED ACCESS CONTROL STRICT ENFORCEMENT
+            const btnBatch = document.getElementById('btn-tab-input-batch');
+            const btnOut = document.getElementById('btn-tab-input-pengeluaran');
 
             if (['ADMIN', 'BENDAHARA'].includes(u.role)) {
-                document.getElementById('btn-tab-pengeluaran').classList.remove('hidden');
+                btnBatch.classList.remove('hidden');
+                btnOut.classList.remove('hidden');
+            } else {
+                // KETUA_RANTING and ANGGOTA cannot input payments or expenses
+                btnBatch.classList.add('hidden');
+                btnOut.classList.add('hidden');
             }
 
             await fetchDashboardData();
@@ -802,6 +878,104 @@
             updateBatchSummary();
         }
 
+        async function fetchUnpaidMembers() {
+            const ranting = document.getElementById('unpaid-select-ranting').value;
+            const bulan = document.getElementById('unpaid-select-bulan').value;
+            const tbody = document.getElementById('table-unpaid-body');
+
+            tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-xs">Memuat status pembayaran...</td></tr>';
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ 
+                        action: 'getAnggotaByRanting', 
+                        token: currentSession.token, 
+                        ranting: ranting,
+                        bulanTahun: bulan
+                    })
+                }).then(r => r.json());
+
+                if (res.status === 'success') {
+                    tbody.innerHTML = '';
+                    res.members.forEach(m => {
+                        const isPaid = m.isPaid;
+                        tbody.innerHTML += `
+                            <tr class="hover:bg-slate-50">
+                                <td class="p-3 font-bold">${m.npa}</td>
+                                <td class="p-3 font-semibold">${m.nama}</td>
+                                <td class="p-3 text-slate-500">${m.unitKerja}</td>
+                                <td class="p-3">${m.ranting}</td>
+                                <td class="p-3 text-center">
+                                    ${isPaid 
+                                        ? '<span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 font-bold rounded-full text-[10px]">LUNAS</span>'
+                                        : '<span class="px-2.5 py-1 bg-rose-100 text-rose-800 font-bold rounded-full text-[10px]">BELUM BAYAR</span>'}
+                                </td>
+                            </tr>
+                        `;
+                    });
+                }
+            } catch (err) {
+                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-rose-600 font-bold text-xs">Error: ${err.message}</td></tr>`;
+            }
+        }
+
+        async function handlePengeluaranSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('alert-pengeluaran');
+            const btn = document.getElementById('btn-out-submit');
+
+            alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-blue-50 text-blue-700 block";
+            alertBox.innerText = "Menyimpan data pengeluaran...";
+            btn.disabled = true;
+
+            const payload = {
+                kategori: document.getElementById('out-kategori').value,
+                keperluan: document.getElementById('out-keperluan').value,
+                penerima: document.getElementById('out-penerima').value,
+                nominal: document.getElementById('out-nominal').value
+            };
+
+            try {
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    body: JSON.stringify({ action: 'inputPengeluaran', token: currentSession.token, payload: payload })
+                }).then(r => r.json());
+
+                if (res.status === 'success') {
+                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 block";
+                    alertBox.innerText = res.message;
+                    fetchDashboardData();
+                } else {
+                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
+                    alertBox.innerText = res.message || "Gagal menyimpan.";
+                }
+            } catch (err) {
+                alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
+                alertBox.innerText = "Error: " + err.message;
+            } finally {
+                btn.disabled = false;
+            }
+        }
+
+        function exportTableToExcel(tableId, filename = '') {
+            const downloadLink = document.createElement("a");
+            const dataType = 'application/vnd.ms-excel';
+            const tableHTML = document.getElementById(tableId).outerHTML.replace(/ /g, '%20');
+            
+            filename = filename ? filename + '.xls' : 'excel_data.xls';
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+            downloadLink.download = filename;
+            downloadLink.click();
+        }
+
+        function printReport(containerId, title) {
+            const printArea = document.getElementById('print-area');
+            const content = document.getElementById(containerId).innerHTML;
+            printArea.innerHTML = `<h2 class="text-xl font-bold mb-4">${title} - PGRI Cabang Tukdana</h2>` + content;
+            window.print();
+        }
+
         function toggleSelectAllAnggota() {
             const checkboxes = document.querySelectorAll('#batch-table-body input[type="checkbox"]');
             const allChecked = Array.from(checkboxes).every(c => c.checked);
@@ -849,81 +1023,6 @@
             } catch (err) {
                 alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
                 alertBox.innerText = "Error: " + err.message;
-            }
-        }
-
-        async function handleChangePasswordSubmit(e) {
-            e.preventDefault();
-            const alertBox = document.getElementById('alert-change-pass');
-            alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-blue-50 text-blue-700 block";
-            alertBox.innerText = "Memproses perubahan password...";
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'changePassword',
-                        token: currentSession.token,
-                        oldPassword: document.getElementById('pass-old').value,
-                        newPassword: document.getElementById('pass-new').value
-                    })
-                }).then(r => r.json());
-
-                if (res.status === 'success') {
-                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 block";
-                    alertBox.innerText = res.message;
-                    document.getElementById('pass-old').value = '';
-                    document.getElementById('pass-new').value = '';
-                } else {
-                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
-                    alertBox.innerText = res.message;
-                }
-            } catch (err) {
-                alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
-                alertBox.innerText = "Error: " + err.message;
-            }
-        }
-
-        async function handlePengeluaranSubmit(e) {
-            e.preventDefault();
-            const alertBox = document.getElementById('alert-pengeluaran-result');
-            const btn = document.getElementById('btn-out-submit');
-
-            alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-blue-50 text-blue-700 block";
-            alertBox.innerText = "Memproses pencatatan pengeluaran...";
-            btn.disabled = true;
-
-            try {
-                const res = await fetch(API_URL, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        action: 'inputPengeluaran',
-                        token: currentSession.token,
-                        payload: {
-                            kategori: document.getElementById('out-kategori').value,
-                            keperluan: document.getElementById('out-keperluan').value,
-                            penerima: document.getElementById('out-penerima').value,
-                            nominal: Number(document.getElementById('out-nominal').value)
-                        }
-                    })
-                }).then(r => r.json());
-
-                if (res.status === 'success') {
-                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-emerald-50 text-emerald-700 block";
-                    alertBox.innerText = res.message;
-                    document.getElementById('out-keperluan').value = '';
-                    document.getElementById('out-penerima').value = '';
-                    document.getElementById('out-nominal').value = '';
-                    fetchDashboardData();
-                } else {
-                    alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
-                    alertBox.innerText = res.message;
-                }
-            } catch (err) {
-                alertBox.className = "p-3 rounded-xl text-xs font-semibold bg-rose-50 text-rose-700 block";
-                alertBox.innerText = "Error: " + err.message;
-            } finally {
-                btn.disabled = false;
             }
         }
 
