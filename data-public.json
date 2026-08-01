@@ -6,7 +6,7 @@
 "sambutan_ketua": {
 "nama": "WARTA, S.Pd.SD, M.Pd",
 "jabatan": "Ketua PGRI Cabang Tukdana (Masa Bakti XXIII 2025 – 2030)",
-"foto": "warta.png",
+"foto": "warta.jpg",
 "teks": "Selamat datang di Portal Resmi Sistem Informasi PGRI Cabang Tukdana (SIPGRI). Portal ini dikembangkan untuk mewujudkan transparansi, profesionalisme, serta pusat administrasi digital bagi seluruh pengurus cabang dan anggota di 12 ranting se-Kecamatan Tukdana."
 },
 "kontak": {
@@ -18,10 +18,10 @@
 }
 },
 "pengurus_harian": [
-{ "jabatan": "KETUA", "nama": "WARTA, S.Pd.SD, M.Pd", "foto": "warta.png" },
+{ "jabatan": "KETUA", "nama": "WARTA, S.Pd.SD, M.Pd", "foto": "warta.jpg" },
 { "jabatan": "WAKIL KETUA I", "nama": "TASRIPIN, S.Pd.", "foto": "tasripin.jpg" },
 { "jabatan": "WAKIL KETUA II", "nama": "SARWA, S.Pd.SD", "foto": "sarwa.jpg" },
-{ "jabatan": "SEKRETARIS", "nama": "NURKASAN, S.Pd.", "foto": "nurkasan.png" },
+{ "jabatan": "SEKRETARIS", "nama": "NURKASAN, S.Pd.", "foto": "nurkasan.jpg" },
 { "jabatan": "WAKIL SEKRETARIS", "nama": "TOKID HERYANTO, S.Pd", "foto": "tokid.jpg" },
 { "jabatan": "BENDAHARA", "nama": "PUJI ASTUTI, S.Pd.SD", "foto": "puji.jpg" },
 { "jabatan": "WAKIL BENDAHARA", "nama": "NANA RUSMANA, S.Pd., M.Pd", "foto": "nana.jpg" }
