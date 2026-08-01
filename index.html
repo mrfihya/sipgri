@@ -338,7 +338,7 @@
         <!-- Footer -->
         <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
-                <p>.Bidang Digitalisasi Organisasi (iu) © 2026 SIPGRI Cabang Tukdana.</p>
+                <p>Bidang Digitalisasi Organisasi (IU) © 2026 SIPGRI Cabang Tukdana</p>
             </div>
         </footer>
     </div>
@@ -400,6 +400,9 @@
 
     <!-- Isolated Official Letter Print Preview Container -->
     <div id="surat-printable-container" class="hidden print-only-letter bg-white p-10 max-w-4xl mx-auto"></div>
+
+    <!-- Custom Toast Notification Container -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
 
     <!-- ==================== MODALS ==================== -->
     <!-- MODAL LOGIN SYSTEM -->
@@ -572,6 +575,23 @@
             checkExistingSession();
         });
 
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-slate-900 border-green-500' : 'bg-slate-900 border-red-500';
+            const icon = type === 'success' ? 'fa-circle-check text-green-400' : 'fa-circle-xmark text-red-400';
+            
+            toast.className = `${bgColor} border-l-4 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center space-x-3 text-xs font-semibold pointer-events-auto transform transition-all duration-300 translate-y-2 opacity-0`;
+            toast.innerHTML = `<i class="fa-solid ${icon} text-base"></i><span>${message}</span>`;
+            
+            container.appendChild(toast);
+            setTimeout(() => { toast.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
         async function callAPI(payload) {
             try {
                 const res = await fetch(GAS_API_URL, {
@@ -626,6 +646,7 @@
                 currentUser = resp.user;
                 userToken = resp.token;
                 closeLoginModal();
+                showToast(`Selamat Datang, ${currentUser.nama}!`, 'success');
                 showDashboardView();
             } else {
                 alertBox.innerText = resp.message || 'Login Gagal';
@@ -1123,17 +1144,22 @@
 
         async function submitIuranBatch() {
             const selectedNPA = Array.from(document.querySelectorAll('.cb-iuran-item:checked')).map(cb => cb.value);
-            if(selectedNPA.length === 0) return alert('Pilih minimal satu anggota!');
+            if(selectedNPA.length === 0) {
+                showToast('Pilih minimal satu anggota yang melakukan pembayaran!', 'error');
+                return;
+            }
 
             const bulan = document.getElementById('select-bulan-iuran').value;
             const itemsToSubmit = currentLoadedMembers.filter(m => selectedNPA.includes(m.npa)).map(m => ({ npa: m.npa, nama: m.nama, ranting: m.ranting }));
 
             const res = await callAPI({ action: 'inputIuranBatch', token: userToken, payload: { bulanTahun: bulan, items: itemsToSubmit } });
             if(res.status === 'success') {
-                alert(res.message);
+                showToast(res.message, 'success');
                 refreshTopFinancialSummary();
                 loadAnggotaForIuran();
-            } else alert('Gagal: ' + res.message);
+            } else {
+                showToast('Gagal: ' + res.message, 'error');
+            }
         }
 
         async function handleInputPengeluaran(e) {
@@ -1154,7 +1180,7 @@
             btn.disabled = false;
             btn.innerText = 'Simpan Pengeluaran Kas';
 
-            alert(res.message);
+            showToast(res.message, res.status === 'success' ? 'success' : 'error');
             if(res.status === 'success') {
                 e.target.reset();
                 refreshTopFinancialSummary();
@@ -1216,9 +1242,8 @@
         }
 
         async function deleteSingleMember(npa) {
-            if(!confirm(`Yakin ingin menghapus anggota dengan NPA ${npa}?`)) return;
             const res = await callAPI({ action: 'deleteAnggota', token: userToken, npa: npa });
-            alert(res.message);
+            showToast(res.message, res.status === 'success' ? 'success' : 'error');
             if(res.status === 'success') loadAllMembersTable();
         }
 
@@ -1234,7 +1259,7 @@
             };
 
             const res = await callAPI({ action: 'addAnggota', token: userToken, payload: payload });
-            alert(res.message);
+            showToast(res.message, res.status === 'success' ? 'success' : 'error');
             if(res.status === 'success') {
                 e.target.reset();
                 loadAllMembersTable();
@@ -1242,17 +1267,19 @@
         }
 
         function downloadCSVTemplate() {
-            // Header CSV standar dengan pembatas koma agar otomatis menjadi kolom tabel di Excel
-            const rows = [
-                ["NPA", "Nama_Lengkap", "Gender", "Tgl_Lahir", "Unit_Kerja", "Ranting"],
-                ["3212010", "Ahmad Dahlan", "L", "12051988", "SDN 1 Tukdana", "Ranting Tukdana & Mekarsari"],
-                ["3212011", "Siti Aminah", "P", "25101990", "SDN 2 Lajer", "Ranting Lajer"]
+            // Header CSV dengan separator titik koma & UTF-8 BOM agar otomatis terpisah menjadi kolom A, B, C, D, E, F di Microsoft Excel
+            const csvRows = [
+                "sep=;",
+                "NPA;Nama_Lengkap;Gender;Tgl_Lahir;Unit_Kerja;Ranting",
+                "3212010;Ahmad Dahlan;L;12051988;SDN 1 Tukdana;Ranting Tukdana & Mekarsari",
+                "3212011;Siti Aminah;P;25101990;SDN 2 Lajer;Ranting Lajer"
             ];
             
-            const csvContent = "data:text/csv;charset=utf-8," + rows.map(e => e.join(",")).join("\n");
-            const encodedUri = encodeURI(csvContent);
+            const csvContent = "\uFEFF" + csvRows.join("\n");
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const link = document.createElement("a");
-            link.setAttribute("href", encodedUri);
+            const url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
             link.setAttribute("download", "Template_Impor_Anggota_PGRI.csv");
             document.body.appendChild(link);
             link.click();
@@ -1275,14 +1302,17 @@
 
         async function executeImportBatch() {
             const rawText = document.getElementById('csv-import-text').value.trim();
-            if(!rawText) return alert('Tempelkan teks data atau unggah file terlebih dahulu!');
+            if(!rawText) {
+                showToast('Tempelkan teks data atau unggah file terlebih dahulu!', 'error');
+                return;
+            }
 
             const lines = rawText.split('\n');
             const items = [];
 
             lines.forEach(line => {
                 const parts = line.split(/[\t,;]+/);
-                if(parts.length >= 5 && parts[0].toLowerCase() !== 'npa') {
+                if(parts.length >= 5 && parts[0].toLowerCase() !== 'npa' && parts[0] !== 'sep=;') {
                     items.push({
                         npa: parts[0].trim(),
                         nama: parts[1].trim(),
@@ -1294,7 +1324,10 @@
                 }
             });
 
-            if(items.length === 0) return alert('Format data tidak valid!');
+            if(items.length === 0) {
+                showToast('Format data tidak valid!', 'error');
+                return;
+            }
 
             const btn = document.getElementById('btn-import-submit');
             btn.disabled = true;
@@ -1304,7 +1337,7 @@
             btn.disabled = false;
             btn.innerText = 'Proses Impor Massal';
 
-            alert(res.message);
+            showToast(res.message, res.status === 'success' ? 'success' : 'error');
             if(res.status === 'success') {
                 document.getElementById('csv-import-text').value = '';
                 closeImportModal();
@@ -1320,7 +1353,7 @@
             };
 
             const res = await callAPI({ action: 'addPengumuman', token: userToken, payload: payload });
-            alert(res.message);
+            showToast(res.message, res.status === 'success' ? 'success' : 'error');
             if(res.status === 'success') {
                 e.target.reset();
                 fetchAndSyncPublicAnnouncements();
