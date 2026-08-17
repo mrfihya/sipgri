@@ -60,6 +60,14 @@
 "agenda": [
 {
 "id": 1,
+"tanggal": "17 Agustus 2026",
+"judul": "Tim Padus PGRI Cabang Tukdana menjadi Aubade",
+"lokasi": "Lapangan Sepak Bola Sukamulya",
+"deskripsi": "Tim Padus PGRI Cabang Tukdana bertugas menjadi Aubade pada Upacara HUT ke-81 RI Tingkat Kec. Tukdana",
+"foto": ["padus1.jpg", "padus2.jpg", "padus3.jpg"]
+},
+{
+"id": 2,
 "tanggal": "23 Januari 2026",
 "judul": "Pelantikan Pengurus",
 "lokasi": "Gedung PGRI Cabang Tukdana",
@@ -67,7 +75,7 @@
 "foto": ["hgn1.jpg", "hgn2.jpg"]
 },
 {
-"id": 2,
+"id": 3,
 "tanggal": "25 Juli 2026",
 "judul": "Penyerahan SK PGRI Ranting Cabang Tukdana",
 "lokasi": "Gedung PGRI Cabang Tukdana",
@@ -76,6 +84,11 @@
 }
 ],
 "pengumuman": [
+{
+"tanggal": "16 Ags 2026",
+"judul": "Gladi Upacara HUT ke-81 Republik Indonesia",
+"ringkasan": "Seluruh Tim Paduan Suara Cabang PGRI Tukdana diharap agar melakukan gladi di Lapangan Sepak bola SUuamulya."
+},
 {
 "tanggal": "01 Ags 2026",
 "judul": "Peluncuran Sistem Informasi SIPGRI Cabang Tukdana",
