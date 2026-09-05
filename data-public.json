@@ -60,6 +60,13 @@
 "agenda": [
 {
 "id": 1,
+"tanggal": "3 September 2026",
+"judul": "Penyerahan DKP dari PGRI Cabang Tukdana",
+"lokasi": "Gedung PGRI Tukdana",
+"deskripsi": "Penyerahan DKP pada anggora PGRI yang purnabakti",
+"foto": ["dkp1.jpg", "dkp2.jpg"]
+},
+"id": 2,
 "tanggal": "17 Agustus 2026",
 "judul": "Tim Padus PGRI Cabang Tukdana menjadi Aubade",
 "lokasi": "Lapangan Sepak Bola Sukamulya",
@@ -67,7 +74,7 @@
 "foto": ["padus1.jpg", "padus2.jpg", "padus3.jpg"]
 },
 {
-"id": 2,
+"id": 3,
 "tanggal": "23 Januari 2026",
 "judul": "Pelantikan Pengurus",
 "lokasi": "Gedung PGRI Cabang Tukdana",
@@ -75,7 +82,7 @@
 "foto": ["hgn1.jpg", "hgn2.jpg"]
 },
 {
-"id": 3,
+"id": 4,
 "tanggal": "25 Juli 2026",
 "judul": "Penyerahan SK PGRI Ranting Cabang Tukdana",
 "lokasi": "Gedung PGRI Cabang Tukdana",
